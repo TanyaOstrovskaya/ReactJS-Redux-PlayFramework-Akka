@@ -1,7 +1,7 @@
 package controllers;
 
-import actors.HelloActor;
-import actors.HelloActorProtocol;
+import actors.PointActor;
+import actors.PointActorProtocol;
 import play.mvc.*;
 import akka.actor.*;
 import scala.compat.java8.FutureConverters;
@@ -10,30 +10,23 @@ import java.util.concurrent.CompletionStage;
 
 import static akka.pattern.Patterns.ask;
 
-/**
- * This controller contains an action to handle HTTP requests
- * to the application's home page.
- */
 @Singleton
 public class HomeController extends Controller {
 
-    final ActorRef helloActor;
+    final ActorRef mainActor;
 
     @Inject public HomeController(ActorSystem system) {
-        helloActor = system.actorOf(HelloActor.getProps());
+        mainActor = system.actorOf(PointActor.getProps());
     }
 
-    public CompletionStage<Result> sayHello(String name) {
-        return FutureConverters.toJava(ask(helloActor, new HelloActorProtocol.SayHello(name), 1000))
-                .thenApply(response -> ok("Hello, " + name));
+    public CompletionStage<Result> sayHello (double x, double y, double r) {
+        return FutureConverters.toJava(ask(mainActor, new PointActorProtocol.Point(x, y, r), 1000))
+                .thenApply(response -> {
+                    PointActorProtocol.Point point = (PointActorProtocol.Point)response;
+                    return ok(point.toString());
+                });
     }
 
-    /**
-     * An action that renders an HTML page with a welcome message.
-     * The configuration in the <code>routes</code> file means that
-     * this method will be called when the application receives a
-     * <code>GET</code> request with a path of <code>/</code>.
-     */
     public Result index() {
         return ok(views.html.index.render());
     }
