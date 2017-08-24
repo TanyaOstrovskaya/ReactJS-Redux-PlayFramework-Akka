@@ -1,22 +1,23 @@
 package actors;
 
 import akka.actor.*;
-import akka.japi.*;
-import actors.HelloActorProtocol.*;
+import actors.PointActorProtocol.*;
 
-public class HelloActor extends AbstractActor {
+public class PointActor extends AbstractActor {
 
     public static Props getProps() {
-        return Props.create(HelloActor.class);
+        return Props.create(PointActor.class);
     }
 
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(SayHello.class, hello -> {
-                    String reply = "Hello, " + hello.name;
+                .match(Point.class, point -> {
+                    Point reply = new Point(point.x, point.y, point.r);
                     sender().tell(reply, self());
                 })
                 .build();
     }
+
+
 }

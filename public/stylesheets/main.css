@@ -1,0 +1,17 @@
+body {
+    margin: 0; /* убираем поля тега BODY */
+}
+
+.point {
+    width: 3px;
+    height: 3px;
+    position: absolute;
+}
+
+.in {
+    background-color: green;
+}
+
+.out {
+    background-color: red;
+}
