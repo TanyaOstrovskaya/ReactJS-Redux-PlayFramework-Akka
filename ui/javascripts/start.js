@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SignIn from "./start-page-content/components/SignIn"
-import Header from "./start-page-content/components/Header"
+import SignIn from "./start-page-content/components/SignIn";
+import Header from "./start-page-content/components/Header";
+
+const root = document.getElementById("container1");
 
 function render() {
     ReactDOM.render (
@@ -9,7 +11,7 @@ function render() {
             <Header/>
             <SignIn/>
         </div>,
-        document.getElementById("container")
+        root
     );
 }
 

@@ -10,6 +10,12 @@ export default class CoordinatesPanel extends React.Component {
         super(props);
         this.state = {x: "", y: "5", r: "" };
     }
+    componentDidMount() {
+        document.getElementById("x").addEventListener("click", this.changeX.bind(this));
+        document.getElementById("y").addEventListener("input", this.changeY.bind(this));
+        document.getElementById("r").addEventListener("click", this.changeR.bind(this));
+        document.getElementById("add-button").addEventListener("click", this.onAddNewPointBttnClick.bind(this));
+    }
     changeX(e) {
         this.setState({ x: e.target.value});
     }
@@ -33,28 +39,28 @@ export default class CoordinatesPanel extends React.Component {
                     {[-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
                         return (
                             <label key={i}>
-                                <Button name="x" onClick={this.changeX.bind(this)} value={number}>{number}</Button>
+                                <Button id="x" name="x" value={number}>{number}</Button>
                             </label>
                         )
                     }.bind(this))}
                 </div>
 
                 <div id="y_coord">
-                    <Input type="text" label="Input Y" name='y' onChange={this.changeY.bind(this)}/>
+                    <Input type="text" label="Input Y" name='y' id="y"/>
                 </div>
 
                 <div id="r">
                     {[-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
                         return (
                             <label key={i}>
-                                <Button name="r" onClick={this.changeR.bind(this)} value={number}>{number}</Button>
+                                <Button name="r" id="r" value={number}>{number}</Button>
                             </label>
                         )
                     }.bind(this))}
                 </div>
 
                 <div id="add-point-bttn">
-                    <Button onClick={this.onAddNewPointBttnClick.bind(this)}>ADD POINT</Button>
+                    <Button id="add-button">ADD POINT</Button>
                 </div>
             </div>
         )

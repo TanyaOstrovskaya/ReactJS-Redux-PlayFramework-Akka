@@ -11,6 +11,7 @@ export default class InteractiveArea extends React.Component {
         this.getMouseClickCoordinates = this.getMouseClickCoordinates.bind(this);
     }
     componentDidMount() {
+        document.getElementById("image").addEventListener("click", this.onCanvasClick.bind(this));
     }
 
     onCanvasClick (event) {
@@ -64,7 +65,7 @@ export default class InteractiveArea extends React.Component {
         return (
             <div id="img-container">
                 {pointDivs}
-                <img id="image" src="public/images/area_9.png" onClick={this.onCanvasClick.bind(this)}/>
+                <img id="image" src="/images/area_9.png" />
             </div>
         );
     }
@@ -72,5 +73,5 @@ export default class InteractiveArea extends React.Component {
 
 InteractiveArea.propTypes = {
     addPoint: React.PropTypes.func.isRequired,
-    points: React.PropTypes.array.isRequired
+    points: React.PropTypes.array.isRequired,
 }

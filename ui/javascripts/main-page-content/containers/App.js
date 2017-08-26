@@ -11,7 +11,7 @@ class App extends React.Component {
         const {addPoint} = this.props.pointActions;
         return (
             <div>
-                <InteractiveArea addPoint={addPoint} points={this.props.points}/>
+                <InteractiveArea addPoint={addPoint} points={this.props.points}  />
                 <PointsTable points={this.props.points} />
                 <CoordinatesPanel/>
             </div>
