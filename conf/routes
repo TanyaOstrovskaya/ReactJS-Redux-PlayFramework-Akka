@@ -2,12 +2,10 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                               controllers.HomeController.index
+GET     /                               controllers.HomeController.index()
+
+GET     /main                           controllers.HomeController.main()
 
 GET     /hello                          controllers.HomeController.sayHello(x:Double, y:Double, r:Double)
 
-GET     /public/javascripts/main.js     controllers.Assets.at(path="/public/javascripts", file="main.js")
-
 GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
-
-GET     /images/*file                   controllers.Assets.at(path="/public/images", file)
