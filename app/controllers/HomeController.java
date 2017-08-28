@@ -19,6 +19,8 @@ public class HomeController extends Controller {
         mainActor = system.actorOf(PointActor.getProps());
     }
 
+
+
     public CompletionStage<Result> sayHello (double x, double y, double r) {
         return FutureConverters.toJava(ask(mainActor, new PointActorProtocol.Point(x, y, r), 1000))
                 .thenApply(response -> {
@@ -29,6 +31,10 @@ public class HomeController extends Controller {
 
     public Result index() {
         return ok(views.html.index.render());
+    }
+
+    public Result main() {
+        return ok(views.html.main.render());
     }
 
 }

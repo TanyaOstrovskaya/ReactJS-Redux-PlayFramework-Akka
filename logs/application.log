@@ -1,10 +1,7 @@
-2017-08-26 12:37:22,001 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-14 - application.conf @ file:/C:/Users/user/Desktop/play-test/run/target/scala-2.12/classes/application.conf: 43: play.crypto.secret is deprecated, use play.http.secret.key instead
-2017-08-26 12:37:22,393 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-14 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2017-08-28 19:33:58,359 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-3 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2017-08-26 12:37:22,643 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-14 - Application started (Dev)
-2017-08-26 12:37:22,650 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-14 - application.conf @ file:/C:/Users/user/Desktop/play-test/run/target/scala-2.12/classes/application.conf: 43: play.crypto.secret is deprecated, use play.http.secret.key instead
-2017-08-26 12:37:24,203 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-8 - application.conf @ file:/C:/Users/user/Desktop/play-test/run/target/scala-2.12/classes/application.conf: 43: play.crypto.secret is deprecated, use play.http.secret.key instead
+2017-08-28 19:33:58,435 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-3 - Application started (Dev)
