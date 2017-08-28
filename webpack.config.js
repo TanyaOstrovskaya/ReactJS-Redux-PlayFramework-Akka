@@ -5,13 +5,13 @@ var destPath = path.join(__dirname, 'public/javascripts')
 
 module.exports = {
     devtool: 'cheap-module-source-map',
-    entry: [
-        path.join(srcPath, 'start.js'),
-        path.join(srcPath, 'main.js')
-    ],
+    entry: {
+        start: './ui/javascripts/start.js',
+        main: './ui/javascripts/main.js',
+    },
     output: {
         path: destPath,
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: 'assets'
     },
     plugins: [

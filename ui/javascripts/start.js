@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import SignIn from "./start-page-content/components/SignIn";
 import Header from "./start-page-content/components/Header";
 
-const root1 = document.getElementById("container1");
+const root1 = document.getElementById("start-page-container");
 
-function render1() {
+export  function startRender() {
     ReactDOM.render (
         <div>
             <Header/>
@@ -15,4 +15,4 @@ function render1() {
     );
 }
 
-render1()
+startRender()
