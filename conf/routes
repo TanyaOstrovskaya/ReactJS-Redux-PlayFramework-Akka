@@ -2,9 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                               controllers.HomeController.index()
+GET     /                               controllers.HomeController.index
 
-GET     /main                           controllers.HomeController.main()
+GET     /main                           controllers.MainController.main
 
 GET     /hello                          controllers.HomeController.sayHello(x:Double, y:Double, r:Double)
 

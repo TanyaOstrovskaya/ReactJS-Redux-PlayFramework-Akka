@@ -1,5 +1,4 @@
 package controllers;
-
 import actors.PointActor;
 import actors.PointActorProtocol;
 import play.mvc.*;
@@ -20,7 +19,6 @@ public class HomeController extends Controller {
     }
 
 
-
     public CompletionStage<Result> sayHello (double x, double y, double r) {
         return FutureConverters.toJava(ask(mainActor, new PointActorProtocol.Point(x, y, r), 1000))
                 .thenApply(response -> {
@@ -31,10 +29,6 @@ public class HomeController extends Controller {
 
     public Result index() {
         return ok(views.html.index.render());
-    }
-
-    public Result main() {
-        return ok(views.html.main.render());
     }
 
 }

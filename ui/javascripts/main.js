@@ -5,18 +5,20 @@ import { Provider } from 'react-redux'
 import App from "./main-page-content/containers/App";
 
 const store = configureStore()
-const root = document.getElementById("container");
+const root = document.getElementById("main-page-container");
 
-function render() {
+export function mainRender() {
     ReactDOM.render (
-        <Provider store={store}>
-            <App/>
-        </Provider>,
+        <div>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </div> ,
         root
     );
 }
 
-render()
-store.subscribe(render)
+store.subscribe(mainRender)
+mainRender()
 
 
