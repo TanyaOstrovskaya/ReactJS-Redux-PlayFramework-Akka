@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ea387edd172a999d415f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8009569bcf6a78271dfa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33608,7 +33608,7 @@
 	                "div",
 	                { id: "img-container" },
 	                pointDivs,
-	                _react3.default.createElement("img", { id: "image", src: "/images/area_9.png" })
+	                _react3.default.createElement("img", { id: "image", src: "/assets/images/area_9.png" })
 	            );
 	        }
 	    }]);
