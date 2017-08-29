@@ -18,13 +18,16 @@ export default class CoordinatesPanel extends React.Component {
     }
     changeX(e) {
         this.setState({ x: e.target.value});
+        console.log(this.state);
     }
     changeY() {
         var y = document.getElementsByName('y').value;
         this.setState({ y: y });
+        console.log(this.state);
     }
     changeR(e) {
         this.setState({ r: e.target.value});
+        console.log(this.state);
     }
     onAddNewPointBttnClick()  {
         console.log (this.state);

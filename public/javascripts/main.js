@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8009569bcf6a78271dfa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c2dbe79858d51fbebec1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -34329,17 +34329,20 @@
 	        key: 'changeX',
 	        value: function changeX(e) {
 	            this.setState({ x: e.target.value });
+	            console.log(this.state);
 	        }
 	    }, {
 	        key: 'changeY',
 	        value: function changeY() {
 	            var y = document.getElementsByName('y').value;
 	            this.setState({ y: y });
+	            console.log(this.state);
 	        }
 	    }, {
 	        key: 'changeR',
 	        value: function changeR(e) {
 	            this.setState({ r: e.target.value });
+	            console.log(this.state);
 	        }
 	    }, {
 	        key: 'onAddNewPointBttnClick',
