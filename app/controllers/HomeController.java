@@ -19,11 +19,12 @@ public class HomeController extends Controller {
     }
 
 
-    public CompletionStage<Result> sayHello (double x, double y, double r) {
+    public CompletionStage<Result> checkPoint(double x, double y, double r) {
         return FutureConverters.toJava(ask(mainActor, new PointActorProtocol.Point(x, y, r), 1000))
                 .thenApply(response -> {
                     PointActorProtocol.Point point = (PointActorProtocol.Point)response;
-                    return ok(point.toString());
+                    System.out.println(point.result);
+                    return ok(Boolean.toString(point.result));
                 });
     }
 
