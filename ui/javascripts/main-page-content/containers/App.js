@@ -8,12 +8,11 @@ import * as pointActions from "../actions/mainPageActions";
 
 class App extends React.Component {
     render() {
-        const {addPoint} = this.props.pointActions;
         return (
             <div>
-                <InteractiveArea addPoint={addPoint} points={this.props.points}  />
+                <InteractiveArea sendPoint={this.props.pointActions.sendPoint} points={this.props.points}  />
                 <PointsTable points={this.props.points} />
-                <CoordinatesPanel addPoint={addPoint}/>
+                <CoordinatesPanel sendPoint={this.props.pointActions.sendPoint} />
             </div>
         );
     }
