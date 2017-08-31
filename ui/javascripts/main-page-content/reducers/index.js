@@ -1,8 +1,8 @@
 const initialState = {
     points: [
         {
-            x: 1,
-            y: 2,
+            x: 0,
+            y: 0,
             result: true
         }
     ]
