@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8009569bcf6a78271dfa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1a7f68b2bbb136d671a4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -32269,15 +32269,15 @@
 	    }
 	};
 
-	var _CUsersUserDesktopPlayTestRunNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	    filename: "C:/Users/user/Desktop/play-test/run/ui/javascripts/start-page-content/components/Header.js",
+	var _CUsersUserDesktopUntitled1Node_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+	    filename: "C:/Users/user/Desktop/untitled1/ui/javascripts/start-page-content/components/Header.js",
 	    components: _components,
 	    locals: [module],
 	    imports: [_react3.default]
 	});
 
-	var _CUsersUserDesktopPlayTestRunNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	    filename: "C:/Users/user/Desktop/play-test/run/ui/javascripts/start-page-content/components/Header.js",
+	var _CUsersUserDesktopUntitled1Node_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+	    filename: "C:/Users/user/Desktop/untitled1/ui/javascripts/start-page-content/components/Header.js",
 	    components: _components,
 	    locals: [],
 	    imports: [_react3.default, _index2.default]
@@ -32285,7 +32285,7 @@
 
 	function _wrapComponent(id) {
 	    return function (Component) {
-	        return _CUsersUserDesktopPlayTestRunNode_modulesReactTransformHmrLibIndexJs2(_CUsersUserDesktopPlayTestRunNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+	        return _CUsersUserDesktopUntitled1Node_modulesReactTransformHmrLibIndexJs2(_CUsersUserDesktopUntitled1Node_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
 	    };
 	}
 
@@ -32378,15 +32378,15 @@
 	    }
 	};
 
-	var _CUsersUserDesktopPlayTestRunNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	    filename: "C:/Users/user/Desktop/play-test/run/ui/javascripts/start-page-content/components/SignIn.js",
+	var _CUsersUserDesktopUntitled1Node_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+	    filename: "C:/Users/user/Desktop/untitled1/ui/javascripts/start-page-content/components/SignIn.js",
 	    components: _components,
 	    locals: [module],
 	    imports: [_react3.default]
 	});
 
-	var _CUsersUserDesktopPlayTestRunNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	    filename: "C:/Users/user/Desktop/play-test/run/ui/javascripts/start-page-content/components/SignIn.js",
+	var _CUsersUserDesktopUntitled1Node_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+	    filename: "C:/Users/user/Desktop/untitled1/ui/javascripts/start-page-content/components/SignIn.js",
 	    components: _components,
 	    locals: [],
 	    imports: [_react3.default, _index2.default]
@@ -32394,7 +32394,7 @@
 
 	function _wrapComponent(id) {
 	    return function (Component) {
-	        return _CUsersUserDesktopPlayTestRunNode_modulesReactTransformHmrLibIndexJs2(_CUsersUserDesktopPlayTestRunNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+	        return _CUsersUserDesktopUntitled1Node_modulesReactTransformHmrLibIndexJs2(_CUsersUserDesktopUntitled1Node_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
 	    };
 	}
 

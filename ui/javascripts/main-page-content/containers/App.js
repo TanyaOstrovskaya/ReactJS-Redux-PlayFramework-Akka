@@ -13,7 +13,7 @@ class App extends React.Component {
             <div>
                 <InteractiveArea addPoint={addPoint} points={this.props.points}  />
                 <PointsTable points={this.props.points} />
-                <CoordinatesPanel/>
+                <CoordinatesPanel addPoint={addPoint}/>
             </div>
         );
     }
