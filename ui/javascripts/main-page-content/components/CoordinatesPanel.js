@@ -8,38 +8,43 @@ import InteractiveArea from "./InteractiveArea"
 export default class CoordinatesPanel extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {x: "", y: "5", r: "" };
+        this.x = 0;
+        this.y = 0;
+        this.r = 0;
     }
     componentDidMount() {
-        document.getElementById("x").addEventListener("click", this.changeX.bind(this));
+        document.getElementById("x_block").addEventListener("click", this.changeX.bind(this));
         document.getElementById("y").addEventListener("input", this.changeY.bind(this));
-        document.getElementById("r").addEventListener("click", this.changeR.bind(this));
+        document.getElementById("r_block").addEventListener("click", this.changeR.bind(this));
         document.getElementById("add-button").addEventListener("click", this.onAddNewPointBttnClick.bind(this));
     }
     changeX(e) {
-        this.setState({ x: e.target.value});
+        console.log( e.target.value);
+        this.x = e.target.value;
     }
     changeY() {
-        var y = document.getElementsByName('y').value;
-        this.setState({ y: y });
+        var y = document.getElementById('y').value;
+        console.log(y);
+        this.y = y;
     }
     changeR(e) {
-        this.setState({ r: e.target.value});
+        console.log(e.target.value);
+        this.r = e.target.value
     }
     onAddNewPointBttnClick()  {
-        console.log (this.state);
-        const res = isInArea(this.state.x, this.state.y, InteractiveArea.DEFAULT_RADIUS);
-        this.props.addPoint(this.state.x, this.state.y, res);
+        console.log (this.x, this.y, this.r);
+        const res = isInArea(this.x, this.y, InteractiveArea.DEFAULT_RADIUS);
+        this.props.addPoint(this.x, this.y, res);
     }
 
     render () {
         return (
             <div>
-                <div id="x_coord">
+                <div id="x_block">
                     {[-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
                         return (
                             <label key={i}>
-                                <Button id="x" name="x" value={number}>{number}</Button>
+                                <Button name="x"  value={number}>{number}</Button>
                             </label>
                         )
                     }.bind(this))}
@@ -49,11 +54,11 @@ export default class CoordinatesPanel extends React.Component {
                     <Input type="text" label="Input Y" name='y' id="y"/>
                 </div>
 
-                <div id="r">
+                <div id="r_block">
                     {[-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
                         return (
                             <label key={i}>
-                                <Button name="r" id="r" value={number}>{number}</Button>
+                                <Button name="r" value={number}>{number}</Button>
                             </label>
                         )
                     }.bind(this))}
@@ -65,4 +70,8 @@ export default class CoordinatesPanel extends React.Component {
             </div>
         )
     }
+}
+
+CoordinatesPanel.propTypes = {
+    addPoint: React.PropTypes.func.isRequired
 }

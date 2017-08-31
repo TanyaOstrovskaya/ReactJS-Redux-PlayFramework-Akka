@@ -1,6 +1,8 @@
 package actors;
 
 import akka.actor.*;
+import akka.actor.AbstractActor;
+import akka.japi.*;
 import actors.PointActorProtocol.*;
 
 public class PointActor extends AbstractActor {
