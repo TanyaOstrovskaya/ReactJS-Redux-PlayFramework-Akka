@@ -65,7 +65,11 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "50cac4c475e9599d87e4"; // eslint-disable-line no-unused-vars
+=======
+/******/ 	var hotCurrentHash = "c2dbe79858d51fbebec1"; // eslint-disable-line no-unused-vars
+>>>>>>> d10eed4f54672b897f244e684683bda3d5d8dd9c
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -34324,21 +34328,37 @@
 	    }, {
 	        key: 'changeX',
 	        value: function changeX(e) {
+<<<<<<< HEAD
 	            console.log(e.target.value);
 	            this.x = e.target.value;
+=======
+	            this.setState({ x: e.target.value });
+	            console.log(this.state);
+>>>>>>> d10eed4f54672b897f244e684683bda3d5d8dd9c
 	        }
 	    }, {
 	        key: 'changeY',
 	        value: function changeY() {
+<<<<<<< HEAD
 	            var y = document.getElementById('y').value;
 	            console.log(y);
 	            this.y = y;
+=======
+	            var y = document.getElementsByName('y').value;
+	            this.setState({ y: y });
+	            console.log(this.state);
+>>>>>>> d10eed4f54672b897f244e684683bda3d5d8dd9c
 	        }
 	    }, {
 	        key: 'changeR',
 	        value: function changeR(e) {
+<<<<<<< HEAD
 	            console.log(e.target.value);
 	            this.r = e.target.value;
+=======
+	            this.setState({ r: e.target.value });
+	            console.log(this.state);
+>>>>>>> d10eed4f54672b897f244e684683bda3d5d8dd9c
 	        }
 	    }, {
 	        key: 'onAddNewPointBttnClick',
