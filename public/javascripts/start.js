@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1a7f68b2bbb136d671a4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "50cac4c475e9599d87e4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -598,11 +598,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _SignIn = __webpack_require__(380);
+	var _SignIn = __webpack_require__(379);
 
 	var _SignIn2 = _interopRequireDefault(_SignIn);
 
-	var _Header = __webpack_require__(379);
+	var _Header = __webpack_require__(378);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
@@ -32227,8 +32227,7 @@
 /* 375 */,
 /* 376 */,
 /* 377 */,
-/* 378 */,
-/* 379 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -32337,7 +32336,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
 
 /***/ }),
-/* 380 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";

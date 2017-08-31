@@ -1,5 +1,4 @@
 import React from 'react';
-import {isInArea} from "../isInArea"
 
 export default class InteractiveArea extends React.Component {
     static get DEFAULT_RADIUS () {
@@ -17,9 +16,7 @@ export default class InteractiveArea extends React.Component {
     onCanvasClick (event) {
         const pos = this.getMouseClickCoordinates(event);
         const coord = this.modifyPositionToCoords(pos.x, pos.y, InteractiveArea.DEFAULT_RADIUS);
-        const result = isInArea(coord.x, coord.y, InteractiveArea.DEFAULT_RADIUS);
-
-        this.props.addPoint(coord.x, coord.y, result);
+        this.props.sendPoint(coord.x, coord.y, InteractiveArea.DEFAULT_RADIUS);
     }
 
     modifyPositionToCoords (x, y, r) {
@@ -72,6 +69,6 @@ export default class InteractiveArea extends React.Component {
 }
 
 InteractiveArea.propTypes = {
-    addPoint: React.PropTypes.func.isRequired,
+    sendPoint: React.PropTypes.func.isRequired,
     points: React.PropTypes.array.isRequired,
 }

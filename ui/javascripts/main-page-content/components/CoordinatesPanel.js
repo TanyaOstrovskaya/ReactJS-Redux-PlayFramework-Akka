@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from 'react-toolbox/lib/button';
 import Input from 'react-toolbox/lib/input';
-import {isInArea} from "../isInArea"
 import InteractiveArea from "./InteractiveArea"
 
 
@@ -33,8 +32,7 @@ export default class CoordinatesPanel extends React.Component {
     }
     onAddNewPointBttnClick()  {
         console.log (this.x, this.y, this.r);
-        const res = isInArea(this.x, this.y, InteractiveArea.DEFAULT_RADIUS);
-        this.props.addPoint(this.x, this.y, res);
+        this.props.sendPoint(this.x, this.y, InteractiveArea.DEFAULT_RADIUS);
     }
 
     render () {
@@ -73,5 +71,5 @@ export default class CoordinatesPanel extends React.Component {
 }
 
 CoordinatesPanel.propTypes = {
-    addPoint: React.PropTypes.func.isRequired
+    sendPoint: React.PropTypes.func.isRequired
 }
