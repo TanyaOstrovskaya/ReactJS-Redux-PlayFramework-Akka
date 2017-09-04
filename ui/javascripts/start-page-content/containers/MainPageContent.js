@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 import React from 'react';
 
 class MainPageContent extends React.Component {
@@ -7,7 +7,7 @@ class MainPageContent extends React.Component {
         return (
             <div>
                 <Header/>
-                <SignIn/>
+                <SignUp/>
             </div>
         );
     }

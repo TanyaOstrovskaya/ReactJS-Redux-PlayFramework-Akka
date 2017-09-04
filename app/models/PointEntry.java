@@ -15,7 +15,6 @@ public class PointEntry {
 
     @Column
     private double x;
-
     @Column
     private double y;
     @Column

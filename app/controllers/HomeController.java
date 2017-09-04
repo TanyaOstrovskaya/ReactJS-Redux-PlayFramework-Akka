@@ -1,6 +1,8 @@
 package controllers;
 import actors.PointActor;
 import models.PointEntry;
+import models.UserEntry;
+import play.Logger;
 import play.db.Database;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
@@ -9,6 +11,8 @@ import akka.actor.*;
 import scala.compat.java8.FutureConverters;
 import javax.inject.*;
 import java.util.concurrent.CompletionStage;
+import play.data.DynamicForm;
+import play.data.FormFactory;
 
 import static akka.pattern.Patterns.ask;
 
@@ -18,6 +22,8 @@ public class HomeController extends Controller {
     final ActorRef mainActor;
     private Database db;
     private JPAApi jpaApi;
+
+    @Inject FormFactory formFactory;
 
     @Inject
     public HomeController(ActorSystem system, Database db, JPAApi api) {
@@ -43,6 +49,21 @@ public class HomeController extends Controller {
             return true;
         });
         return res;
+    }
+
+    public boolean addNewUser (UserEntry user) {
+        boolean res = jpaApi.withTransaction(entityManager -> {
+            entityManager.persist(user);
+            return true;
+        });
+        return res;
+    }
+
+    public Result signUpNewUser () {
+        DynamicForm dynamicForm = formFactory.form().bindFromRequest();
+        this.addNewUser(new UserEntry(dynamicForm.get("username"), dynamicForm.get("password"), dynamicForm.get("email")));
+        return redirect("/");
+
     }
 
     public Result index() {

@@ -6,7 +6,7 @@ export default class SignIn extends React.Component {
             <div id="sign-in-form">
 
                 <div>
-                    <form method="post" id="sign-in-form">
+                    <form method="post">
                         <div>
                             <label>Enter username</label>
                             <input id="username" type="text" placeholder="username" required={true}/>

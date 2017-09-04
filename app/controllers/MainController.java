@@ -11,6 +11,10 @@ public class MainController {
     public MainController() {
     }
 
+    public static Result signUpNewUser() {
+        return Results.TODO;
+    }
+
     public Result main () {
         return ok(views.html.main.render());
     }
