@@ -1,5 +1,6 @@
 package controllers;
 
+import models.PointEntry;
 import play.api.Play;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
@@ -27,16 +28,15 @@ public class DBConnector extends Controller {
     }
 
     public Result list () {
-        String res = getNamesFromDB();
-        System.out.println(res);
-        return ok (res);
+        List<PointEntry> res = getNamesFromDB();
+        return ok (res.get(0).toString());
     }
 
     @Transactional
-    public String getNamesFromDB () {
-        String res = jpaApi.withTransaction(entityManager -> {
-            Query query = entityManager.createNativeQuery("select count(*) from SYSTEM.PERSON");
-            return (String) query.getSingleResult().toString();
+    public List<PointEntry> getNamesFromDB () {
+        List<PointEntry> res = jpaApi.withTransaction(entityManager -> {
+            Query query = entityManager.createQuery("select p from PointEntry p", PointEntry.class);
+            return (List<PointEntry>) query.getResultList();
         });
         return res;
     }
