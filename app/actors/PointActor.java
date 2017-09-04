@@ -2,8 +2,7 @@ package actors;
 
 import akka.actor.*;
 import akka.actor.AbstractActor;
-import akka.japi.*;
-import actors.PointActorProtocol.*;
+import models.PointEntry;
 
 public class PointActor extends AbstractActor {
 
@@ -14,8 +13,8 @@ public class PointActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(Point.class, point -> {
-                    Point reply = new Point(point.x, point.y, point.r);
+                .match(PointEntry.class, point -> {
+                    PointEntry reply = new PointEntry(point.getX(), point.getY(), point.getR());
                     sender().tell(reply, self());
                 })
                 .build();

@@ -1,4 +1,6 @@
 package models;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -6,10 +8,14 @@ import javax.persistence.*;
 public class PointEntry {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "ID")
+    @GeneratedValue(generator="some_seq_gen_name")
+    @SequenceGenerator(name="some_seq_gen_name", sequenceName="t_seq", allocationSize=1)
     private int id;
+
     @Column
     private double x;
+
     @Column
     private double y;
     @Column
@@ -18,6 +24,27 @@ public class PointEntry {
     private int result;
 
     public PointEntry () {}
+
+    public PointEntry(double x, double y, double r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        if (this.isInArea(x, y, r)){
+            this.result = 1;
+        } else  {
+            this.result = 0;
+        }
+    }
+
+    private boolean isInArea (double x, double y, double r) {
+        if (( (x>=0) && (y>=0) && (x*x + y*y <= r*r/4) ) ||
+                ( (x<=0) && (y>=0) && (y < 2*x + r) ) ||
+                ( (x>=0) && (x<=r) && (y>=-r/2) && (y<=0) ) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public int getId() {
         return id;
@@ -61,7 +88,7 @@ public class PointEntry {
 
     @Override
     public String toString () {
-        return Double.toString(this.x) + Double.toString(this.y)
-                + Double.toString(this.r) + Integer.toString(this.result);
+        return Double.toString(this.x) + " " + Double.toString(this.y) + " "
+                + Double.toString(this.r) + " " + Integer.toString(this.result);
     }
 }

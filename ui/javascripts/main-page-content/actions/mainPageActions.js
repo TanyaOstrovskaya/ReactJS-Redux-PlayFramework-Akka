@@ -7,7 +7,7 @@ export function sendPoint(x, y, r) {
         xhr.onreadystatechange = function() {
             if ( xhr.readyState == 4 && xhr.status == 200 ) {
                 console.log(xhr.responseText);
-                dispatch (addPoint(x, y, xhr.responseText.localeCompare("true") === 0));
+                dispatch (addPoint(x, y, xhr.responseText.localeCompare("1") === 0));
             }
         }
         xhr.open("GET", '/check?x=' + x + '&y=' + y +  '&r=' + r, true);

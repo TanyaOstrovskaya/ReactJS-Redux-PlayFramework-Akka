@@ -1,6 +1,9 @@
 package controllers;
 import actors.PointActor;
-import actors.PointActorProtocol;
+import models.PointEntry;
+import play.db.Database;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
 import play.mvc.*;
 import akka.actor.*;
 import scala.compat.java8.FutureConverters;
@@ -13,18 +16,33 @@ import static akka.pattern.Patterns.ask;
 public class HomeController extends Controller {
 
     final ActorRef mainActor;
+    private Database db;
+    private JPAApi jpaApi;
 
-    @Inject public HomeController(ActorSystem system) {
-        mainActor = system.actorOf(PointActor.getProps());
+    @Inject
+    public HomeController(ActorSystem system, Database db, JPAApi api) {
+        this.mainActor = system.actorOf(PointActor.getProps());
+        this.db = db;
+        this.jpaApi = api;
     }
 
-
-    public CompletionStage<Result> sayHello (double x, double y, double r) {
-        return FutureConverters.toJava(ask(mainActor, new PointActorProtocol.Point(x, y, r), 1000))
+    @Transactional
+    public CompletionStage<Result> checkPoint (double x, double y, double r) {
+        return FutureConverters.toJava(ask(mainActor, new PointEntry(x, y, r), 1000))
                 .thenApply(response -> {
-                    PointActorProtocol.Point point = (PointActorProtocol.Point)response;
-                    return ok(point.toString());
+                    PointEntry point = (PointEntry)response;
+                    addNewPoint(point);
+                    System.out.println(point.toString());
+                    return ok(Integer.toString(point.getResult()));
                 });
+    }
+
+    public boolean addNewPoint (PointEntry point) {
+        boolean res = jpaApi.withTransaction(entityManager -> {
+            entityManager.persist(point);
+            return true;
+        });
+        return res;
     }
 
     public Result index() {
