@@ -1,4 +1,6 @@
-2017-08-31 18:39:04,146 [INFO] from play.core.server.NettyServer in pool-10-thread-4 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
-2017-08-31 18:39:30,765 [INFO] from play.api.Play in ForkJoinPool-2-worker-1 - Application started (Dev)
-2017-08-31 18:39:31,156 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-3 - Content-Type set both in header (application/javascript; charset=utf-8) and attached to entity (application/javascript; charset=utf-8), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-08-31 18:39:31,664 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-3 - Content-Type set both in header (application/x-navimap) and attached to entity (application/x-navimap), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
+2017-09-04 11:44:44,835 [INFO] from play.core.server.NettyServer in pool-10-thread-4 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-04 11:44:50,524 [WARN] from application in ForkJoinPool-2-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-04 11:44:50,567 [INFO] from application in ForkJoinPool-2-worker-1 - Creating Pool for datasource 'default'
+2017-09-04 11:44:50,778 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-2-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-04 11:44:50,779 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-2-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-04 11:44:52,306 [INFO] from play.api.Play in ForkJoinPool-2-worker-1 - Application started (Dev)

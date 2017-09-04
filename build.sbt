@@ -12,6 +12,8 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   "com.typesafe.akka" %% "akka-actor" % "2.5.4",
-  "com.typesafe.akka" %% "akka-testkit" % "2.5.4" % Test
+  "com.typesafe.akka" %% "akka-testkit" % "2.5.4" % Test,
+  javaJpa,
+  "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final"
 )
 
