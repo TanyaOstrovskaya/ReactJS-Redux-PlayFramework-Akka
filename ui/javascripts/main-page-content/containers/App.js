@@ -10,9 +10,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <InteractiveArea sendPoint={this.props.pointActions.sendPoint} points={this.props.points}  />
+                <InteractiveArea sendPoint={this.props.pointActions.sendPoint} points={this.props.points} r={this.props.r} />
                 <PointsTable points={this.props.points} />
-                <CoordinatesPanel sendPoint={this.props.pointActions.sendPoint} />
+                <CoordinatesPanel points={this.props.points} sendPoint={this.props.pointActions.sendPoint} sendRadius={this.props.pointActions.sendRadius} />
             </div>
         );
     }
@@ -20,7 +20,8 @@ class App extends React.Component {
 
 function mapStateToProps (state) {
     return {
-        points: state.points
+        points: state.points,
+        r: state.r
     }
 }
 

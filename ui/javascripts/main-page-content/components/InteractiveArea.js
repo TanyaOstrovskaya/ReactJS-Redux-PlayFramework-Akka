@@ -15,8 +15,8 @@ export default class InteractiveArea extends React.Component {
 
     onCanvasClick (event) {
         const pos = this.getMouseClickCoordinates(event);
-        const coord = this.modifyPositionToCoords(pos.x, pos.y, InteractiveArea.DEFAULT_RADIUS);
-        this.props.sendPoint(coord.x, coord.y, InteractiveArea.DEFAULT_RADIUS);
+        const coord = this.modifyPositionToCoords(pos.x, pos.y, this.props.r);
+        this.props.sendPoint(coord.x, coord.y, this.props.r, 1);
     }
 
     modifyPositionToCoords (x, y, r) {
@@ -46,7 +46,7 @@ export default class InteractiveArea extends React.Component {
         var pointDivs = [];
         if (document.getElementById("image")) {
             let parent = document.getElementById("image");
-            var r = InteractiveArea.DEFAULT_RADIUS;
+            var r = this.props.r;
             pointDivs = this.props.points.map(function (point, i) {
                 const offsetX = point.x / r * parent.clientWidth / 2 + parent.clientWidth / 2;
                 const offsetY = -point.y / r * parent.clientHeight / 2 + parent.clientHeight / 2;
@@ -71,4 +71,5 @@ export default class InteractiveArea extends React.Component {
 InteractiveArea.propTypes = {
     sendPoint: React.PropTypes.func.isRequired,
     points: React.PropTypes.array.isRequired,
+    r: React.PropTypes.number.isRequired
 }

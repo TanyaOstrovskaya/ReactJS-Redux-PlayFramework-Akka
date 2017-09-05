@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d91f7d64881db26198d5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5ba9783601d50c3866a2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33553,8 +33553,8 @@
 	        key: "onCanvasClick",
 	        value: function onCanvasClick(event) {
 	            var pos = this.getMouseClickCoordinates(event);
-	            var coord = this.modifyPositionToCoords(pos.x, pos.y, InteractiveArea.DEFAULT_RADIUS);
-	            this.props.sendPoint(coord.x, coord.y, InteractiveArea.DEFAULT_RADIUS);
+	            var coord = this.modifyPositionToCoords(pos.x, pos.y, this.props.r);
+	            this.props.sendPoint(coord.x, coord.y, this.props.r, 1);
 	        }
 	    }, {
 	        key: "modifyPositionToCoords",
@@ -33589,7 +33589,7 @@
 	            var pointDivs = [];
 	            if (document.getElementById("image")) {
 	                var parent = document.getElementById("image");
-	                var r = InteractiveArea.DEFAULT_RADIUS;
+	                var r = this.props.r;
 	                pointDivs = this.props.points.map(function (point, i) {
 	                    var offsetX = point.x / r * parent.clientWidth / 2 + parent.clientWidth / 2;
 	                    var offsetY = -point.y / r * parent.clientHeight / 2 + parent.clientHeight / 2;
@@ -33617,7 +33617,8 @@
 
 	InteractiveArea.propTypes = {
 	    sendPoint: _react3.default.PropTypes.func.isRequired,
-	    points: _react3.default.PropTypes.array.isRequired
+	    points: _react3.default.PropTypes.array.isRequired,
+	    r: _react3.default.PropTypes.number.isRequired
 		};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
@@ -34202,8 +34203,11 @@
 	    value: true
 	});
 	exports.sendPoint = sendPoint;
+	exports.sendRadius = sendRadius;
 	exports.addPoint = addPoint;
-	function sendPoint(x, y, r) {
+	exports.changeRadius = changeRadius;
+	exports.updatePoint = updatePoint;
+	function sendPoint(x, y, r, isnew) {
 	    return function (dispatch) {
 
 	        console.log(x, y, r);
@@ -34212,10 +34216,31 @@
 	        xhr.onreadystatechange = function () {
 	            if (xhr.readyState == 4 && xhr.status == 200) {
 	                console.log(xhr.responseText);
-	                dispatch(addPoint(x, y, xhr.responseText.localeCompare("1") === 0));
+	                if (isnew > 0) {
+	                    dispatch(addPoint(x, y, xhr.responseText.localeCompare("1") === 0));
+	                } else {
+	                    dispatch(updatePoint(x, y, xhr.responseText.localeCompare("1") === 0));
+	                }
 	            }
 	        };
-	        xhr.open("GET", '/check?x=' + x + '&y=' + y + '&r=' + r, true);
+	        xhr.open("GET", '/check?x=' + x + '&y=' + y + '&r=' + r + '&isnew=' + isnew, true);
+	        xhr.send();
+	    };
+	}
+
+	function sendRadius(points, r) {
+	    return function (dispatch) {
+	        var xhr = new XMLHttpRequest();
+	        xhr.onreadystatechange = function () {
+	            if (xhr.readyState == 4 && xhr.status == 200) {
+	                dispatch(changeRadius(r));
+
+	                points.forEach(function (point) {
+	                    dispatch(sendPoint(point.x, point.y, r, 0));
+	                });
+	            }
+	        };
+	        xhr.open("POST", '/change_radius?r=' + r, true);
 	        xhr.send();
 	    };
 	}
@@ -34223,6 +34248,20 @@
 	function addPoint(x, y, result) {
 	    return {
 	        type: 'ADD_POINT',
+	        x: x, y: y, result: result
+	    };
+	}
+
+	function changeRadius(r) {
+	    return {
+	        type: 'CHANGE_R',
+	        r: r
+	    };
+	}
+
+	function updatePoint(x, y, result) {
+	    return {
+	        type: 'UPDATE_POINT',
 	        x: x, y: y, result: result
 	    };
 		}
@@ -34339,14 +34378,14 @@
 	    }, {
 	        key: 'changeR',
 	        value: function changeR(e) {
-	            console.log(e.target.value);
 	            this.r = e.target.value;
+	            this.props.sendRadius(this.props.points, e.target.value);
 	        }
 	    }, {
 	        key: 'onAddNewPointBttnClick',
 	        value: function onAddNewPointBttnClick() {
 	            console.log(this.x, this.y, this.r);
-	            this.props.sendPoint(this.x, this.y, _InteractiveArea2.default.DEFAULT_RADIUS);
+	            this.props.sendPoint(this.x, this.y, this.r, 1);
 	        }
 	    }, {
 	        key: 'render',
@@ -34409,7 +34448,9 @@
 
 
 	CoordinatesPanel.propTypes = {
-	    sendPoint: _react3.default.PropTypes.func.isRequired
+	    points: _react3.default.PropTypes.array.isRequired,
+	    sendPoint: _react3.default.PropTypes.func.isRequired,
+	    sendRadius: _react3.default.PropTypes.func.isRequired
 		};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
@@ -34652,9 +34693,9 @@
 	            return _react3.default.createElement(
 	                'div',
 	                null,
-	                _react3.default.createElement(_InteractiveArea2.default, { sendPoint: this.props.pointActions.sendPoint, points: this.props.points }),
+	                _react3.default.createElement(_InteractiveArea2.default, { sendPoint: this.props.pointActions.sendPoint, points: this.props.points, r: this.props.r }),
 	                _react3.default.createElement(_PointsTable2.default, { points: this.props.points }),
-	                _react3.default.createElement(_CoordinatesPanel2.default, { sendPoint: this.props.pointActions.sendPoint })
+	                _react3.default.createElement(_CoordinatesPanel2.default, { points: this.props.points, sendPoint: this.props.pointActions.sendPoint, sendRadius: this.props.pointActions.sendRadius })
 	            );
 	        }
 	    }]);
@@ -34664,7 +34705,8 @@
 
 	function mapStateToProps(state) {
 	    return {
-	        points: state.points
+	        points: state.points,
+	        r: state.r
 	    };
 	}
 
@@ -34686,6 +34728,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = pointsState;
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -34695,7 +34740,8 @@
 	        x: 0,
 	        y: 0,
 	        result: true
-	    }]
+	    }],
+	    r: 2
 	};
 
 	function pointsState() {
@@ -34711,7 +34757,17 @@
 	                    result: action.result
 	                }])
 	            });
+	        case 'CHANGE_R':
+	            return _extends({}, state, {
+	                r: action.r
+	            });
 
+	        case 'UPDATE_POINT':
+	            return _extends({}, state, {
+	                points: state.points.map(function (point) {
+	                    return point.x === action.x && point.y === action.y ? _extends({}, point, { result: action.result }) : point;
+	                })
+	            });
 	        default:
 	            return state;
 	    }
@@ -34739,6 +34795,11 @@
 	var _reducers2 = _interopRequireDefault(_reducers);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var initialState = {
+	    points: [],
+	    r: 5
+	};
 
 	function configureStore(initialState) {
 	    var store = (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default));

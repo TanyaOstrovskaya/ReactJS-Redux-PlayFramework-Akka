@@ -3,7 +3,6 @@ import actors.PointActor;
 import database.Password;
 import models.PointEntry;
 import models.UserEntry;
-import play.Logger;
 import play.db.Database;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
@@ -35,13 +34,29 @@ public class HomeController extends Controller {
         this.jpaApi = api;
     }
 
+    public Result changeRadius(Double r) {
+        boolean res = jpaApi.withTransaction(entityManager -> {
+            List<PointEntry> entries =
+                    entityManager.createQuery("FROM PointEntry", PointEntry.class).getResultList();
+            for (PointEntry p : entries) {
+                if (PointEntry.isInArea(p.getX(), p.getY(), r ))
+                    p.setResult(1);
+                else
+                    p.setResult(0);
+            }
+            return true;
+        });
+        return (ok(r.toString()));
+    }
 
     @Transactional
-    public CompletionStage<Result> checkPoint (double x, double y, double r) {
+    public CompletionStage<Result> checkPoint (double x, double y, double r, int isnew) {
         return FutureConverters.toJava(ask(mainActor, new PointEntry(x, y, r), 1000))
                 .thenApply(response -> {
                     PointEntry point = (PointEntry)response;
-                    addNewPoint(point);
+                    if (isnew > 0) {
+                        addNewPoint(point);
+                    }
                     System.out.println(point.toString());
                     return ok(Integer.toString(point.getResult()));
                 });

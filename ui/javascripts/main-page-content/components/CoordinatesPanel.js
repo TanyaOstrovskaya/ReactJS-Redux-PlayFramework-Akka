@@ -27,12 +27,12 @@ export default class CoordinatesPanel extends React.Component {
         this.y = y;
     }
     changeR(e) {
-        console.log(e.target.value);
-        this.r = e.target.value
+        this.r = e.target.value;
+        this.props.sendRadius (this.props.points, e.target.value);
     }
     onAddNewPointBttnClick()  {
         console.log (this.x, this.y, this.r);
-        this.props.sendPoint(this.x, this.y, InteractiveArea.DEFAULT_RADIUS);
+        this.props.sendPoint(this.x, this.y, this.r, 1);
     }
 
     render () {
@@ -71,5 +71,7 @@ export default class CoordinatesPanel extends React.Component {
 }
 
 CoordinatesPanel.propTypes = {
-    sendPoint: React.PropTypes.func.isRequired
+    points: React.PropTypes.array.isRequired,
+    sendPoint: React.PropTypes.func.isRequired,
+    sendRadius: React.PropTypes.func.isRequired
 }

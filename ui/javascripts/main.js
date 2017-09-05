@@ -4,8 +4,11 @@ import configureStore from "./main-page-content/store/configureStore"
 import { Provider } from 'react-redux'
 import App from "./main-page-content/containers/App";
 
+
 const store = configureStore()
 const root = document.getElementById("main-page-container");
+
+
 
 export function mainRender() {
     ReactDOM.render (

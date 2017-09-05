@@ -28,14 +28,14 @@ public class PointEntry {
         this.x = x;
         this.y = y;
         this.r = r;
-        if (this.isInArea(x, y, r)){
+        if (PointEntry.isInArea(x, y, r)){
             this.result = 1;
         } else  {
             this.result = 0;
         }
     }
 
-    private boolean isInArea (double x, double y, double r) {
+    public static boolean isInArea (double x, double y, double r) {
         if (( (x>=0) && (y>=0) && (x*x + y*y <= r*r/4) ) ||
                 ( (x<=0) && (y>=0) && (y < 2*x + r) ) ||
                 ( (x>=0) && (x<=r) && (y>=-r/2) && (y<=0) ) ) {
