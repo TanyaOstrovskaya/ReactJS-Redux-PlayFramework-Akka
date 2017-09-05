@@ -6,15 +6,16 @@ export default class SignIn extends React.Component {
             <div id="sign-in-form">
 
                 <div>
-                    <form method="post">
+                    <form method="post" action="/users/signin ">
                         <div>
-                            <label>Enter username</label>
-                            <input id="username" type="text" placeholder="username" required={true}/>
+                            <label>Enter login</label>
+                            <input name="username" type="text" placeholder="username" required={true}/>
                         </div>
                         <div>
                             <label>Enter password</label>
-                            <input id="password" type="text" placeholder="password" required={true}/>
+                            <input name="password" type="text" placeholder="password" required={true}/>
                         </div>
+                        <button type="submit" className="btn">submit</button>
                     </form>
                 </div>
             </div>

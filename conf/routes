@@ -13,3 +13,5 @@ GET     /assets/*file                   controllers.Assets.versioned(path="/publ
 
 POST    /users/signup                   controllers.HomeController.signUpNewUser
 
+POST    /users/signin                   controllers.HomeController.signInUser
+

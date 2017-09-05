@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a193bf21dde18d12ad61"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d91f7d64881db26198d5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -598,7 +598,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _SignIn = __webpack_require__(379);
+	var _SignIn = __webpack_require__(362);
 
 	var _SignIn2 = _interopRequireDefault(_SignIn);
 
@@ -32322,24 +32322,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
 /***/ }),
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -32420,16 +32403,16 @@
 	                    null,
 	                    _react3.default.createElement(
 	                        "form",
-	                        { method: "post" },
+	                        { method: "post", action: "/users/signin " },
 	                        _react3.default.createElement(
 	                            "div",
 	                            null,
 	                            _react3.default.createElement(
 	                                "label",
 	                                null,
-	                                "Enter username"
+	                                "Enter login"
 	                            ),
-	                            _react3.default.createElement("input", { id: "username", type: "text", placeholder: "username", required: true })
+	                            _react3.default.createElement("input", { name: "username", type: "text", placeholder: "username", required: true })
 	                        ),
 	                        _react3.default.createElement(
 	                            "div",
@@ -32439,7 +32422,12 @@
 	                                null,
 	                                "Enter password"
 	                            ),
-	                            _react3.default.createElement("input", { id: "password", type: "text", placeholder: "password", required: true })
+	                            _react3.default.createElement("input", { name: "password", type: "text", placeholder: "password", required: true })
+	                        ),
+	                        _react3.default.createElement(
+	                            "button",
+	                            { type: "submit", className: "btn" },
+	                            "submit"
 	                        )
 	                    )
 	                )
@@ -32454,6 +32442,23 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
 /***/ }),
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
 /* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32619,6 +32624,10 @@
 
 	var _SignUp2 = _interopRequireDefault(_SignUp);
 
+	var _SignIn = __webpack_require__(362);
+
+	var _SignIn2 = _interopRequireDefault(_SignIn);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32669,7 +32678,30 @@
 	                "div",
 	                null,
 	                _react3.default.createElement(_Header2.default, null),
-	                _react3.default.createElement(_SignUp2.default, null)
+	                _react3.default.createElement(
+	                    "div",
+	                    null,
+	                    _react3.default.createElement(
+	                        "div",
+	                        { name: "sign-up-block" },
+	                        _react3.default.createElement(
+	                            "label",
+	                            null,
+	                            "Sign Up"
+	                        ),
+	                        _react3.default.createElement(_SignUp2.default, null)
+	                    ),
+	                    _react3.default.createElement(
+	                        "div",
+	                        { name: "sign-in-block" },
+	                        _react3.default.createElement(
+	                            "label",
+	                            null,
+	                            "Sign In"
+	                        ),
+	                        _react3.default.createElement(_SignIn2.default, null)
+	                    )
+	                )
 	            );
 	        }
 	    }]);

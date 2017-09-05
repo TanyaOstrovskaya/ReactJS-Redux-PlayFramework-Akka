@@ -21,3 +21,4 @@ export function addPoint (x, y, result) {
         x, y, result
     }
 }
+

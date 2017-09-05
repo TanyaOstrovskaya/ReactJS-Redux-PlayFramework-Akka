@@ -1,5 +1,6 @@
 package controllers;
 import actors.PointActor;
+import database.Password;
 import models.PointEntry;
 import models.UserEntry;
 import play.Logger;
@@ -10,6 +11,8 @@ import play.mvc.*;
 import akka.actor.*;
 import scala.compat.java8.FutureConverters;
 import javax.inject.*;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.concurrent.CompletionStage;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -31,6 +34,7 @@ public class HomeController extends Controller {
         this.db = db;
         this.jpaApi = api;
     }
+
 
     @Transactional
     public CompletionStage<Result> checkPoint (double x, double y, double r) {
@@ -59,12 +63,52 @@ public class HomeController extends Controller {
         return res;
     }
 
-    public Result signUpNewUser () {
-        DynamicForm dynamicForm = formFactory.form().bindFromRequest();
-        this.addNewUser(new UserEntry(dynamicForm.get("username"), dynamicForm.get("password"), dynamicForm.get("email")));
-        return redirect("/");
-
+    public boolean checkUserPasswd (String login, String passwd) {
+        boolean result = false;
+        try {
+            UserEntry res = jpaApi.withTransaction(entityManager -> {
+                TypedQuery<UserEntry> query = entityManager.createQuery("SELECT u FROM UserEntry AS u WHERE u.login = :login", UserEntry.class);
+                return query.setParameter("login", login).getSingleResult();
+            });
+            if (Password.check(passwd, res.getPassword())) {
+                result = true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            result = false;
+        }
+        return result;
     }
+
+
+    public Result signUpNewUser () {
+        try {
+            DynamicForm dynamicForm = formFactory.form().bindFromRequest();
+            this.addNewUser(new UserEntry(dynamicForm.get("username"), Password.getSaltedHash(dynamicForm.get("password")), dynamicForm.get("email")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            return redirect("/");
+        }
+    }
+
+    public Result signInUser() {
+        String url = null;
+        try {
+            DynamicForm dynamicForm = formFactory.form().bindFromRequest();
+            if (this.checkUserPasswd(dynamicForm.get("username"), dynamicForm.get("password"))) {
+                url = "/main";
+            } else {
+                url = "/";
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            url = "/";
+        } finally {
+            return redirect(url);
+        }
+    }
+
 
     public Result index() {
         return ok(views.html.index.render());
