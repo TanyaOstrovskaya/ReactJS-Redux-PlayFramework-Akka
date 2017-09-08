@@ -18,3 +18,5 @@ POST    /users/signin                   controllers.HomeController.signInUser
 
 POST    /change_radius                  controllers.HomeController.changeRadius(r:Double)
 
+GET     /send                           controllers.HomeController.sendTestMail
+

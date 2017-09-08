@@ -1,16 +1,22 @@
 package controllers;
 import actors.PointActor;
 import database.Password;
+import mail.MailProducer;
 import models.PointEntry;
 import models.UserEntry;
+import org.apache.camel.CamelContext;
+import org.apache.camel.builder.RouteBuilder;
 import play.db.Database;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
+import play.libs.mailer.Email;
 import play.mvc.*;
 import akka.actor.*;
 import scala.compat.java8.FutureConverters;
 import javax.inject.*;
 import javax.persistence.TypedQuery;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 import play.data.DynamicForm;
@@ -24,6 +30,9 @@ public class HomeController extends Controller {
     final ActorRef mainActor;
     private Database db;
     private JPAApi jpaApi;
+
+    @Inject
+    private static CamelContext context;
 
     @Inject FormFactory formFactory;
 
@@ -127,6 +136,19 @@ public class HomeController extends Controller {
 
     public Result index() {
         return ok(views.html.index.render());
+    }
+
+    public Result sendTestMail() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd  hh:mm:ss");
+        Email email = new Email();
+        email.setFrom("noreply@abc.com");
+        email.addTo("ostrtanja@gmail.com");
+        email.setSubject("Email example");
+        email.setBodyText("<html><body><p>Date: <b> " + sdf.format(new Date()) + " </b></p></body></html>");
+
+        MailProducer.sendMail(email);
+        return ok("email sent! " + sdf.format(new Date()));
     }
 
 }

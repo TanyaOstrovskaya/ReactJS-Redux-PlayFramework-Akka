@@ -1,16 +1,352 @@
-2017-09-05 21:35:33,448 [INFO] from play.core.server.NettyServer in pool-42-thread-2 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
-2017-09-05 21:35:41,234 [WARN] from application in ForkJoinPool-4-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
-2017-09-05 21:35:41,268 [INFO] from application in ForkJoinPool-4-worker-1 - Creating Pool for datasource 'default'
-2017-09-05 21:35:41,504 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-4-worker-1 - datasource [default] bound to JNDI as DefaultDS
-2017-09-05 21:35:41,505 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-4-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
-2017-09-05 21:35:44,487 [INFO] from play.api.Play in ForkJoinPool-4-worker-1 - Application started (Dev)
-2017-09-05 21:35:44,847 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-9 - Content-Type set both in header (application/javascript; charset=utf-8) and attached to entity (application/javascript; charset=utf-8), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:35:45,615 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-9 - Content-Type set both in header (application/x-navimap) and attached to entity (application/x-navimap), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:36:49,272 [WARN] from play.core.server.netty.NettyModelConversion in netty-event-loop-6 - Content-Type set both in header (application/javascript; charset=utf-8) and attached to entity (application/javascript; charset=utf-8), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:36:49,760 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-19 - Content-Type set both in header (application/x-navimap) and attached to entity (application/x-navimap), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:41:00,741 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-29 - Content-Type set both in header (application/javascript; charset=utf-8) and attached to entity (application/javascript; charset=utf-8), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:41:01,816 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-29 - Content-Type set both in header (application/x-navimap) and attached to entity (application/x-navimap), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:41:10,327 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-46 - Content-Type set both in header (application/javascript; charset=utf-8) and attached to entity (application/javascript; charset=utf-8), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:41:10,757 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-48 - Content-Type set both in header (application/x-navimap) and attached to entity (application/x-navimap), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
-2017-09-05 21:56:37,698 [WARN] from com.zaxxer.hikari.pool.HikariPool in Hikari housekeeper (pool HikariPool-0) - HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
-2017-09-05 22:55:34,348 [WARN] from com.zaxxer.hikari.pool.HikariPool in Hikari housekeeper (pool HikariPool-0) - HikariPool-0 - Unusual system clock change detected, soft-evicting connections from pool.
+2017-09-08 14:11:22,157 [INFO] from play.core.server.NettyServer in pool-4-thread-2 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-08 14:12:33,014 [ERROR] from application in netty-event-loop-3 - 
+
+! @759bl6g06 - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:466)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:155)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.Guice.createInjector(Guice.java:96)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-08 14:33:00,657 [INFO] from play.core.server.NettyServer in pool-4-thread-2 - Stopping server...
+2017-09-08 14:33:06,462 [INFO] from play.core.server.NettyServer in pool-10-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-08 14:33:18,308 [ERROR] from application in netty-event-loop-3 - 
+
+! @759bnpc7m - Internal server error, for (GET) [/] ->
+ 
+play.api.PlayException: Cannot load module[Module [play.modules.swagger.SwaggerModule] cannot be instantiated.]
+	at play.api.inject.Modules$.play$api$inject$Modules$$constructModule(Module.scala:147)
+	at play.api.inject.Modules$$anonfun$locate$1.apply(Module.scala:114)
+	at play.api.inject.Modules$$anonfun$locate$1.apply(Module.scala:113)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.immutable.HashSet$HashSet1.foreach(HashSet.scala:316)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:972)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.AbstractSet.scala$collection$SetLike$$super$map(Set.scala:47)
+	at scala.collection.SetLike$class.map(SetLike.scala:92)
+	at scala.collection.AbstractSet.map(Set.scala:47)
+	at play.api.inject.Modules$.locate(Module.scala:113)
+	at play.api.inject.guice.GuiceableModule$.loadModules(GuiceInjectorBuilder.scala:272)
+	at play.api.inject.guice.GuiceApplicationBuilder$$anonfun$$lessinit$greater$default$10$1.apply(GuiceApplicationBuilder.scala:30)
+	at play.api.inject.guice.GuiceApplicationBuilder$$anonfun$$lessinit$greater$default$10$1.apply(GuiceApplicationBuilder.scala:30)
+	at play.api.inject.guice.GuiceApplicationBuilder.applicationModule(GuiceApplicationBuilder.scala:109)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: java.lang.ClassNotFoundException: play.modules.swagger.SwaggerModule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at play.api.inject.Modules$$anonfun$locate$1$$anonfun$apply$1.apply(Module.scala:115)
+	at play.api.inject.Modules$$anonfun$locate$1$$anonfun$apply$1.apply(Module.scala:115)
+	at play.api.inject.Modules$.play$api$inject$Modules$$constructModule(Module.scala:121)
+	... 36 common frames omitted
+2017-09-08 14:36:33,520 [INFO] from play.core.server.NettyServer in pool-10-thread-5 - Stopping server...
+2017-09-08 14:36:37,547 [INFO] from play.core.server.NettyServer in pool-16-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-08 14:38:37,074 [ERROR] from application in netty-event-loop-3 - 
+
+! @759bohfn1 - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:466)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:155)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.Guice.createInjector(Guice.java:96)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-08 14:42:22,383 [INFO] from play.core.server.NettyServer in pool-16-thread-5 - Stopping server...
+2017-09-08 14:44:19,892 [INFO] from play.core.server.NettyServer in pool-22-thread-2 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-08 14:44:51,260 [ERROR] from application in netty-event-loop-3 - 
+
+! @759bpcnab - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:466)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:155)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.Guice.createInjector(Guice.java:96)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-08 14:51:29,273 [ERROR] from application in netty-event-loop-5 - 
+
+! @759c09e88 - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:466)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:155)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.Guice.createInjector(Guice.java:96)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-08 15:07:00,228 [INFO] from play.core.server.NettyServer in pool-22-thread-2 - Stopping server...
+2017-09-08 15:07:03,935 [INFO] from play.core.server.NettyServer in pool-32-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-08 15:07:14,123 [ERROR] from application in netty-event-loop-3 - 
+
+! @759c2b7oc - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for com.typesafe.config.Config was bound.
+  while locating com.typesafe.config.Config
+    for parameter 0 at play.api.libs.mailer.SMTPConfigurationProvider.<init>(SMTPConfigurationProvider.scala:7)
+  at play.api.libs.mailer.SMTPConfigurationModule.configure(SMTPConfigurationModule.scala:8) (via modules: com.google.inject.util.Modules$OverrideModule -> play.api.libs.mailer.SMTPConfigurationModule)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:466)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:155)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.Guice.createInjector(Guice.java:96)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-08 15:14:07,549 [INFO] from play.core.server.NettyServer in pool-32-thread-5 - Stopping server...
+2017-09-08 15:14:10,970 [INFO] from play.core.server.NettyServer in pool-38-thread-3 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-08 15:15:05,229 [ERROR] from application in netty-event-loop-3 - 
+
+! @759c3c2l2 - Internal server error, for (GET) [/] ->
+ 
+play.api.PlayException: Cannot load module[Module [controllers.CustomMailerConfigurationModule] cannot be instantiated.]
+	at play.api.inject.Modules$.play$api$inject$Modules$$constructModule(Module.scala:147)
+	at play.api.inject.Modules$$anonfun$locate$1.apply(Module.scala:114)
+	at play.api.inject.Modules$$anonfun$locate$1.apply(Module.scala:113)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.immutable.HashSet$HashSet1.foreach(HashSet.scala:316)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:972)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.AbstractSet.scala$collection$SetLike$$super$map(Set.scala:47)
+	at scala.collection.SetLike$class.map(SetLike.scala:92)
+	at scala.collection.AbstractSet.map(Set.scala:47)
+	at play.api.inject.Modules$.locate(Module.scala:113)
+	at play.api.inject.guice.GuiceableModule$.loadModules(GuiceInjectorBuilder.scala:272)
+	at play.api.inject.guice.GuiceApplicationBuilder$$anonfun$$lessinit$greater$default$10$1.apply(GuiceApplicationBuilder.scala:30)
+	at play.api.inject.guice.GuiceApplicationBuilder$$anonfun$$lessinit$greater$default$10$1.apply(GuiceApplicationBuilder.scala:30)
+	at play.api.inject.guice.GuiceApplicationBuilder.applicationModule(GuiceApplicationBuilder.scala:109)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: java.lang.ClassNotFoundException: controllers.CustomMailerConfigurationModule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at play.api.inject.Modules$$anonfun$locate$1$$anonfun$apply$1.apply(Module.scala:115)
+	at play.api.inject.Modules$$anonfun$locate$1$$anonfun$apply$1.apply(Module.scala:115)
+	at play.api.inject.Modules$.play$api$inject$Modules$$constructModule(Module.scala:121)
+	... 36 common frames omitted
+2017-09-08 15:17:04,812 [INFO] from play.core.server.NettyServer in pool-38-thread-3 - Stopping server...
