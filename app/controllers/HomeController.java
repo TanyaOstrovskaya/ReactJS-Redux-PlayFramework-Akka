@@ -1,5 +1,8 @@
 package controllers;
+import actors.MailActor;
 import actors.PointActor;
+import akka.stream.ActorMaterializer;
+import akka.stream.Materializer;
 import database.Password;
 import models.PointEntry;
 import models.UserEntry;
@@ -22,16 +25,22 @@ import static akka.pattern.Patterns.ask;
 public class HomeController extends Controller {
 
     final ActorRef mainActor;
+    final ActorRef jmsActor;
+    final Materializer mat;
     private Database db;
     private JPAApi jpaApi;
+
 
     @Inject FormFactory formFactory;
 
     @Inject
     public HomeController(ActorSystem system, Database db, JPAApi api) {
+        this.mat = ActorMaterializer.create(system);
         this.mainActor = system.actorOf(PointActor.getProps());
+        this.jmsActor = system.actorOf(Props.create(MailActor.class, mat));
         this.db = db;
         this.jpaApi = api;
+
     }
 
     public Result changeRadius(Double r) {
@@ -59,6 +68,14 @@ public class HomeController extends Controller {
                     }
                     System.out.println(point.toString());
                     return ok(Integer.toString(point.getResult()));
+                });
+    }
+
+    public CompletionStage<Result> sendEmail () {
+        return FutureConverters.toJava(ask(jmsActor, "Tanya", 1000))
+                .thenApply(response -> {
+                    System.out.println(response);
+                    return ok(response.toString());
                 });
     }
 

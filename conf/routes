@@ -11,6 +11,7 @@ GET     /check                          controllers.HomeController.checkPoint(x:
 
 GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
 
+GET     /send                           controllers.HomeController.sendEmail
 
 POST    /users/signup                   controllers.HomeController.signUpNewUser
 

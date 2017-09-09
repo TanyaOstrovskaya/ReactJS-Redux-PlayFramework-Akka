@@ -17,3 +17,16 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final"
 )
 
+libraryDependencies += "com.typesafe.akka" % "akka-camel_2.11" % "2.3.3"
+
+libraryDependencies += "org.apache.camel" % "camel-activemq" % "1.1.0"
+// https://mvnrepository.com/artifact/org.apache.activemq/activemq-core
+libraryDependencies += "org.apache.activemq" % "activemq-core" % "5.0.0"
+// https://mvnrepository.com/artifact/org.apache.activemq/activeio-core
+libraryDependencies += "org.apache.activemq" % "activeio-core" % "3.1.4"
+
+libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-jms" % "0.11"
+
+
+
+
