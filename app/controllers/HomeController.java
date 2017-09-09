@@ -1,22 +1,19 @@
 package controllers;
+import actors.MailActor;
 import actors.PointActor;
+import akka.stream.ActorMaterializer;
+import akka.stream.Materializer;
 import database.Password;
-import mail.MailProducer;
 import models.PointEntry;
 import models.UserEntry;
-import org.apache.camel.CamelContext;
-import org.apache.camel.builder.RouteBuilder;
 import play.db.Database;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
-import play.libs.mailer.Email;
 import play.mvc.*;
 import akka.actor.*;
 import scala.compat.java8.FutureConverters;
 import javax.inject.*;
 import javax.persistence.TypedQuery;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 import play.data.DynamicForm;
@@ -28,19 +25,22 @@ import static akka.pattern.Patterns.ask;
 public class HomeController extends Controller {
 
     final ActorRef mainActor;
+    final ActorRef jmsActor;
+    final Materializer mat;
     private Database db;
     private JPAApi jpaApi;
 
-    @Inject
-    private static CamelContext context;
 
     @Inject FormFactory formFactory;
 
     @Inject
     public HomeController(ActorSystem system, Database db, JPAApi api) {
+        this.mat = ActorMaterializer.create(system);
         this.mainActor = system.actorOf(PointActor.getProps());
+        this.jmsActor = system.actorOf(Props.create(MailActor.class, mat));
         this.db = db;
         this.jpaApi = api;
+
     }
 
     public Result changeRadius(Double r) {
@@ -68,6 +68,14 @@ public class HomeController extends Controller {
                     }
                     System.out.println(point.toString());
                     return ok(Integer.toString(point.getResult()));
+                });
+    }
+
+    public CompletionStage<Result> sendEmail () {
+        return FutureConverters.toJava(ask(jmsActor, "Tanya", 1000))
+                .thenApply(response -> {
+                    System.out.println(response);
+                    return ok(response.toString());
                 });
     }
 
@@ -136,19 +144,6 @@ public class HomeController extends Controller {
 
     public Result index() {
         return ok(views.html.index.render());
-    }
-
-    public Result sendTestMail() {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd  hh:mm:ss");
-        Email email = new Email();
-        email.setFrom("noreply@abc.com");
-        email.addTo("ostrtanja@gmail.com");
-        email.setSubject("Email example");
-        email.setBodyText("<html><body><p>Date: <b> " + sdf.format(new Date()) + " </b></p></body></html>");
-
-        MailProducer.sendMail(email);
-        return ok("email sent! " + sdf.format(new Date()));
     }
 
 }

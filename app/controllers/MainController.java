@@ -1,14 +1,15 @@
 package controllers;
 
+import email.SendMailTLS;
 import play.mvc.*;
 import javax.inject.*;
-import static play.mvc.Results.ok;
 
 @Singleton
-public class MainController {
+public class MainController extends Controller {
 
     @Inject
     public MainController() {
+
     }
 
     public static Result signUpNewUser() {
@@ -17,5 +18,10 @@ public class MainController {
 
     public Result main () {
         return ok(views.html.main.render());
+    }
+
+    public Result send () {
+        SendMailTLS.send();
+        return  ok ("OK");
     }
 }
