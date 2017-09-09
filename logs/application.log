@@ -1,12 +1,605 @@
-2017-09-09 14:53:02,019 [INFO] from play.core.server.NettyServer in pool-10-thread-1 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
-2017-09-09 14:53:10,072 [WARN] from application in ForkJoinPool-2-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
-2017-09-09 14:53:10,145 [INFO] from application in ForkJoinPool-2-worker-1 - Creating Pool for datasource 'default'
-2017-09-09 14:53:10,400 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-2-worker-1 - datasource [default] bound to JNDI as DefaultDS
-2017-09-09 14:53:10,402 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-2-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
-2017-09-09 14:53:13,112 [INFO] from play.api.Play in ForkJoinPool-2-worker-1 - Application started (Dev)
-2017-09-09 14:59:54,990 [INFO] from application in application-akka.actor.default-dispatcher-2 - Shutting down connection pool.
-2017-09-09 14:59:55,210 [WARN] from application in application-akka.actor.default-dispatcher-2 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
-2017-09-09 14:59:55,211 [INFO] from application in application-akka.actor.default-dispatcher-2 - Creating Pool for datasource 'default'
-2017-09-09 14:59:55,256 [INFO] from play.api.db.HikariCPConnectionPool in application-akka.actor.default-dispatcher-2 - datasource [default] bound to JNDI as DefaultDS
-2017-09-09 14:59:55,257 [INFO] from play.api.db.DefaultDBApi in application-akka.actor.default-dispatcher-2 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
-2017-09-09 14:59:55,612 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-2 - Application started (Dev)
+2017-09-09 22:16:54,052 [INFO] from play.core.server.NettyServer in pool-4-thread-6 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:17:42,815 [WARN] from application in ForkJoinPool-1-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:17:43,154 [INFO] from application in ForkJoinPool-1-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:17:45,076 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-1-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:17:45,077 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-1-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:17:46,361 [ERROR] from application in netty-event-loop-3 - 
+
+! @759le0li5 - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for field at email.MailerService.mailerClient(MailerService.java:8)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for field at email.MailerService.mailerClient(MailerService.java:8)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1025)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1051)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:405)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:400)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-09 22:20:06,158 [INFO] from play.core.server.NettyServer in pool-4-thread-6 - Stopping server...
+2017-09-09 22:20:10,355 [INFO] from play.core.server.NettyServer in pool-10-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:20:31,183 [WARN] from application in ForkJoinPool-2-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:20:31,243 [INFO] from application in ForkJoinPool-2-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:20:31,591 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-2-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:20:31,593 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-2-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:20:32,283 [ERROR] from application in netty-event-loop-3 - 
+
+! @759lea77h - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1025)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1051)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:405)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:400)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-09 22:20:37,938 [ERROR] from application in netty-event-loop-3 - 
+
+! @759lea77h - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1025)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1051)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:405)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:400)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-09 22:20:42,327 [INFO] from play.core.server.NettyServer in pool-10-thread-5 - Stopping server...
+2017-09-09 22:20:45,099 [INFO] from play.core.server.NettyServer in pool-16-thread-7 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:21:21,602 [WARN] from application in ForkJoinPool-3-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:21:21,642 [INFO] from application in ForkJoinPool-3-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:21:21,913 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-3-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:21:21,915 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-3-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:21:22,527 [ERROR] from application in netty-event-loop-3 - 
+
+! @759led3fh - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1025)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1051)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:405)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:400)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-09 22:24:14,002 [INFO] from play.core.server.NettyServer in pool-16-thread-7 - Stopping server...
+2017-09-09 22:24:20,648 [INFO] from play.core.server.NettyServer in pool-22-thread-4 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:24:35,513 [WARN] from application in ForkJoinPool-4-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:24:35,551 [INFO] from application in ForkJoinPool-4-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:24:35,817 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-4-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:24:35,818 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-4-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:24:36,602 [ERROR] from application in netty-event-loop-3 - 
+
+! @759leo4j4 - Internal server error, for (GET) [/] ->
+ 
+play.api.UnexpectedException: Unexpected exception[ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error]
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:170)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:126)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:126)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:124)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:124)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) No implementation for play.libs.mailer.MailerClient was bound.
+  while locating play.libs.mailer.MailerClient
+    for parameter 0 at email.MailerService.<init>(MailerService.java:13)
+  while locating email.MailerService
+    for parameter 0 at controllers.MainController.<init>(MainController.java:13)
+  while locating controllers.MainController
+    for parameter 2 at router.Routes.<init>(Routes.scala:36)
+  while locating router.Routes
+  while locating play.api.inject.RoutesProvider
+  while locating play.api.routing.Router
+    for parameter 0 at play.api.http.JavaCompatibleHttpRequestHandler.<init>(HttpRequestHandler.scala:200)
+  while locating play.api.http.JavaCompatibleHttpRequestHandler
+  while locating play.api.http.HttpRequestHandler
+    for parameter 4 at play.api.DefaultApplication.<init>(Application.scala:221)
+  at play.api.DefaultApplication.class(Application.scala:221)
+  while locating play.api.DefaultApplication
+  while locating play.api.Application
+
+1 error
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1025)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1051)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:405)
+	at play.api.inject.guice.GuiceInjector.instanceOf(GuiceInjectorBuilder.scala:400)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:158)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:155)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:155)
+	... 14 common frames omitted
+2017-09-09 22:36:12,926 [INFO] from play.core.server.NettyServer in pool-22-thread-4 - Stopping server...
+2017-09-09 22:36:27,903 [INFO] from play.core.server.NettyServer in pool-28-thread-6 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:37:32,975 [WARN] from application in ForkJoinPool-5-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:37:33,022 [INFO] from application in ForkJoinPool-5-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:37:33,246 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-5-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:37:33,247 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-5-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:37:36,818 [INFO] from play.api.Play in ForkJoinPool-5-worker-1 - Application started (Dev)
+2017-09-09 22:37:37,832 [WARN] from play.core.server.netty.NettyModelConversion in application-akka.actor.default-dispatcher-7 - Content-Type set both in header (application/javascript; charset=utf-8) and attached to entity (application/javascript; charset=utf-8), ignoring content type from entity. To remove this warning, use Result.as(...) to set the content type, rather than setting the header manually.
+2017-09-09 22:37:47,301 [ERROR] from application in application-akka.actor.default-dispatcher-7 - 
+
+! @759lgh4f4 - Internal server error, for (GET) [/send] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[RuntimeException: javax.mail.AuthenticationFailedException: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbvL
+534-5.7.14 Uciw4tGIXqr9xLfr8WRzfDiADJRO8XEboB9mcBtBGqGzDv55wP1N2LA9sygX_VxlTSUbL9
+534-5.7.14 D22d5AhVcEyp0j3Waktd2WG8hdpw0U9mI6TZdvIOCqmfIdEv5cXEPXOtCC-wyQxsiWu1nI
+534-5.7.14 3Pw7DA0n6z4AlrM_GmeejM-xy7jOW9mgN_oZni2e6xdSh1mvHOupxoq4GVv4CJcbBX4yxC
+534-5.7.14 wd0IQTlkvkIjreWnnqwgbDSpQ3avg> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 t135sm783462lff.32 - gsmtp
+]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:280)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:206)
+	at play.api.GlobalSettings$class.onError(GlobalSettings.scala:160)
+	at play.api.DefaultGlobal$.onError(GlobalSettings.scala:188)
+	at play.api.http.GlobalSettingsHttpErrorHandler.onServerError(HttpErrorHandler.scala:98)
+	at play.core.server.netty.PlayRequestHandler$$anonfun$2$$anonfun$apply$1.applyOrElse(PlayRequestHandler.scala:100)
+	at play.core.server.netty.PlayRequestHandler$$anonfun$2$$anonfun$apply$1.applyOrElse(PlayRequestHandler.scala:99)
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:346)
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:345)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:36)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:70)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:44)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:252)
+	at scala.concurrent.impl.Promise$DefaultPromise.link(Promise.scala:308)
+	at scala.concurrent.impl.Promise$DefaultPromise.linkRootOf(Promise.scala:293)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:255)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:36)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.RuntimeException: javax.mail.AuthenticationFailedException: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbvL
+534-5.7.14 Uciw4tGIXqr9xLfr8WRzfDiADJRO8XEboB9mcBtBGqGzDv55wP1N2LA9sygX_VxlTSUbL9
+534-5.7.14 D22d5AhVcEyp0j3Waktd2WG8hdpw0U9mI6TZdvIOCqmfIdEv5cXEPXOtCC-wyQxsiWu1nI
+534-5.7.14 3Pw7DA0n6z4AlrM_GmeejM-xy7jOW9mgN_oZni2e6xdSh1mvHOupxoq4GVv4CJcbBX4yxC
+534-5.7.14 wd0IQTlkvkIjreWnnqwgbDSpQ3avg> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 t135sm783462lff.32 - gsmtp
+
+	at email.SendMailTLS.send(SendMailTLS.java:48)
+	at controllers.MainController.send(MainController.java:24)
+	at router.Routes$$anonfun$routes$1$$anonfun$applyOrElse$5$$anonfun$apply$5.apply(Routes.scala:231)
+	at router.Routes$$anonfun$routes$1$$anonfun$applyOrElse$5$$anonfun$apply$5.apply(Routes.scala:231)
+	at play.core.routing.HandlerInvokerFactory$$anon$4.resultCall(HandlerInvoker.scala:157)
+	at play.core.routing.HandlerInvokerFactory$$anon$4.resultCall(HandlerInvoker.scala:156)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$14$$anon$3$$anon$1.invocation(HandlerInvoker.scala:136)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:73)
+	at play.http.HttpRequestHandler$1.call(HttpRequestHandler.java:54)
+	at play.core.j.JavaAction$$anonfun$7.apply(JavaAction.scala:108)
+	at play.core.j.JavaAction$$anonfun$7.apply(JavaAction.scala:108)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:70)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:48)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction.apply(JavaAction.scala:108)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5$$anonfun$apply$6.apply(Action.scala:112)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5$$anonfun$apply$6.apply(Action.scala:112)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5.apply(Action.scala:111)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5.apply(Action.scala:110)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$2.apply(Action.scala:110)
+	at play.api.mvc.Action$$anonfun$apply$2.apply(Action.scala:103)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:253)
+	... 14 common frames omitted
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbvL
+534-5.7.14 Uciw4tGIXqr9xLfr8WRzfDiADJRO8XEboB9mcBtBGqGzDv55wP1N2LA9sygX_VxlTSUbL9
+534-5.7.14 D22d5AhVcEyp0j3Waktd2WG8hdpw0U9mI6TZdvIOCqmfIdEv5cXEPXOtCC-wyQxsiWu1nI
+534-5.7.14 3Pw7DA0n6z4AlrM_GmeejM-xy7jOW9mgN_oZni2e6xdSh1mvHOupxoq4GVv4CJcbBX4yxC
+534-5.7.14 wd0IQTlkvkIjreWnnqwgbDSpQ3avg> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 t135sm783462lff.32 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:932)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:843)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:748)
+	at javax.mail.Service.connect(Service.java:388)
+	at javax.mail.Service.connect(Service.java:246)
+	at javax.mail.Service.connect(Service.java:195)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at email.SendMailTLS.send(SendMailTLS.java:43)
+	... 41 common frames omitted
+2017-09-09 22:39:43,520 [INFO] from application in pool-28-thread-6 - Shutting down connection pool.
+2017-09-09 22:39:47,360 [INFO] from play.core.server.NettyServer in pool-34-thread-4 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:39:56,397 [WARN] from application in ForkJoinPool-6-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:39:56,466 [INFO] from application in ForkJoinPool-6-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:39:56,779 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-6-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:39:56,779 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-6-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:40:01,105 [INFO] from play.api.Play in ForkJoinPool-6-worker-1 - Application started (Dev)
+2017-09-09 22:40:06,486 [ERROR] from application in application-akka.actor.default-dispatcher-2 - 
+
+! @759lgp2cb - Internal server error, for (GET) [/send] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[RuntimeException: javax.mail.AuthenticationFailedException: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbtL
+534-5.7.14 Dc7PpuI15M3T2pS6u39RWUudv8Vz-N4ifmkkGlDez1NwRkmqRmi-o-fyg0UEaeGIvsSdMN
+534-5.7.14 t0NEgfULIdK8krrlVNKhygT1-a3qRFqR1u9NRMo_dITgXhVPQkKHpqZxbZOFQtg7apbvOW
+534-5.7.14 bGRNpyZ9IhGSC08vEZYEWSfZYHXrPfNsPcYNk0sDqE0d3FxqxuOvIbo5dUJwJS3eVI2iDM
+534-5.7.14 79m3OfJCE9aFrZ0AEfU52LykBgeuI> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 25sm922994ljh.18 - gsmtp
+]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:280)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:206)
+	at play.api.GlobalSettings$class.onError(GlobalSettings.scala:160)
+	at play.api.DefaultGlobal$.onError(GlobalSettings.scala:188)
+	at play.api.http.GlobalSettingsHttpErrorHandler.onServerError(HttpErrorHandler.scala:98)
+	at play.core.server.netty.PlayRequestHandler$$anonfun$2$$anonfun$apply$1.applyOrElse(PlayRequestHandler.scala:100)
+	at play.core.server.netty.PlayRequestHandler$$anonfun$2$$anonfun$apply$1.applyOrElse(PlayRequestHandler.scala:99)
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:346)
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:345)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:36)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:70)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:44)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:252)
+	at scala.concurrent.impl.Promise$DefaultPromise.link(Promise.scala:308)
+	at scala.concurrent.impl.Promise$DefaultPromise.linkRootOf(Promise.scala:293)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:255)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:36)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.RuntimeException: javax.mail.AuthenticationFailedException: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbtL
+534-5.7.14 Dc7PpuI15M3T2pS6u39RWUudv8Vz-N4ifmkkGlDez1NwRkmqRmi-o-fyg0UEaeGIvsSdMN
+534-5.7.14 t0NEgfULIdK8krrlVNKhygT1-a3qRFqR1u9NRMo_dITgXhVPQkKHpqZxbZOFQtg7apbvOW
+534-5.7.14 bGRNpyZ9IhGSC08vEZYEWSfZYHXrPfNsPcYNk0sDqE0d3FxqxuOvIbo5dUJwJS3eVI2iDM
+534-5.7.14 79m3OfJCE9aFrZ0AEfU52LykBgeuI> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 25sm922994ljh.18 - gsmtp
+
+	at email.SendMailTLS.send(SendMailTLS.java:48)
+	at controllers.MainController.send(MainController.java:24)
+	at router.Routes$$anonfun$routes$1$$anonfun$applyOrElse$5$$anonfun$apply$5.apply(Routes.scala:231)
+	at router.Routes$$anonfun$routes$1$$anonfun$applyOrElse$5$$anonfun$apply$5.apply(Routes.scala:231)
+	at play.core.routing.HandlerInvokerFactory$$anon$4.resultCall(HandlerInvoker.scala:157)
+	at play.core.routing.HandlerInvokerFactory$$anon$4.resultCall(HandlerInvoker.scala:156)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$14$$anon$3$$anon$1.invocation(HandlerInvoker.scala:136)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:73)
+	at play.http.HttpRequestHandler$1.call(HttpRequestHandler.java:54)
+	at play.core.j.JavaAction$$anonfun$7.apply(JavaAction.scala:108)
+	at play.core.j.JavaAction$$anonfun$7.apply(JavaAction.scala:108)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:70)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:48)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction.apply(JavaAction.scala:108)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5$$anonfun$apply$6.apply(Action.scala:112)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5$$anonfun$apply$6.apply(Action.scala:112)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5.apply(Action.scala:111)
+	at play.api.mvc.Action$$anonfun$apply$2$$anonfun$apply$5.apply(Action.scala:110)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$2.apply(Action.scala:110)
+	at play.api.mvc.Action$$anonfun$apply$2.apply(Action.scala:103)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:253)
+	... 14 common frames omitted
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbtL
+534-5.7.14 Dc7PpuI15M3T2pS6u39RWUudv8Vz-N4ifmkkGlDez1NwRkmqRmi-o-fyg0UEaeGIvsSdMN
+534-5.7.14 t0NEgfULIdK8krrlVNKhygT1-a3qRFqR1u9NRMo_dITgXhVPQkKHpqZxbZOFQtg7apbvOW
+534-5.7.14 bGRNpyZ9IhGSC08vEZYEWSfZYHXrPfNsPcYNk0sDqE0d3FxqxuOvIbo5dUJwJS3eVI2iDM
+534-5.7.14 79m3OfJCE9aFrZ0AEfU52LykBgeuI> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 25sm922994ljh.18 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:932)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:843)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:748)
+	at javax.mail.Service.connect(Service.java:388)
+	at javax.mail.Service.connect(Service.java:246)
+	at javax.mail.Service.connect(Service.java:195)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at email.SendMailTLS.send(SendMailTLS.java:43)
+	... 41 common frames omitted
+2017-09-09 22:42:03,321 [INFO] from application in pool-34-thread-4 - Shutting down connection pool.
+2017-09-09 22:42:37,777 [INFO] from play.core.server.NettyServer in pool-40-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-09-09 22:42:44,431 [WARN] from application in ForkJoinPool-7-worker-1 - application.conf @ file:/C:/Users/user/Desktop/untitled1/target/scala-2.11/classes/application.conf: 6: user is deprecated, use username instead
+2017-09-09 22:42:44,494 [INFO] from application in ForkJoinPool-7-worker-1 - Creating Pool for datasource 'default'
+2017-09-09 22:42:44,847 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-7-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2017-09-09 22:42:44,848 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-7-worker-1 - Database [default] connected at jdbc:oracle:thin:@localhost:1521:XE
+2017-09-09 22:42:49,125 [INFO] from play.api.Play in ForkJoinPool-7-worker-1 - Application started (Dev)

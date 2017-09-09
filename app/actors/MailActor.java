@@ -9,6 +9,7 @@ import akka.stream.alpakka.jms.javadsl.JmsSink;
 import akka.stream.alpakka.jms.javadsl.JmsSource;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
+import email.MailerService;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import play.mvc.*;
 
@@ -62,7 +63,6 @@ public class MailActor extends AbstractActor {
                 .take(1)
                 .runWith(Sink.seq(), mat)
                 .thenApply(response -> {
-                    
                     return Arrays.asList(response.toString());
                 });
     }
