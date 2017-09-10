@@ -12,7 +12,6 @@ export function sendPoint(x, y, r, isnew) {
                 } else  {
                     dispatch (updatePoint(x, y, xhr.responseText.localeCompare("1") === 0));
                 }
-
             }
         }
         xhr.open("GET", '/check?x=' + x + '&y=' + y +  '&r=' + r + '&isnew=' + isnew, true);

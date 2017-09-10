@@ -16,9 +16,18 @@ body {
     background-color: red;
 }
 
+.no {
+    background-color: white;
+}
+
 .grid {
     display: grid;
 
     /*свойство для колонок*/
     grid-template-columns: 35% 1fr 20% 1fr 40%;
+}
+
+.start-grid {
+    display: grid;
+    grid-template-rows: auto 5% auto 5% auto;
 }

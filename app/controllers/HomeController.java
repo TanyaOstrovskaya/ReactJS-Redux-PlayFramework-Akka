@@ -68,9 +68,9 @@ public class HomeController extends Controller {
                     PointEntry point = (PointEntry)response;
                     if (isnew > 0) {
                         addNewPoint(point);
-                    }
-                    if (point.getResult() > 0) {
-                        this.sendEmail();
+                        if (point.getResult() > 0) {
+                            this.sendEmail();
+                        }
                     }
                     System.out.println(point.toString());
                     return ok(Integer.toString(point.getResult()));

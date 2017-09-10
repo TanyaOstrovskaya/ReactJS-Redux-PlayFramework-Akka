@@ -51,6 +51,9 @@ export default class InteractiveArea extends React.Component {
                 const offsetX = point.x / r * parent.clientWidth / 2 + parent.clientWidth / 2;
                 const offsetY = -point.y / r * parent.clientHeight / 2 + parent.clientHeight / 2;
                 let className = "point " + (point.result == true ? "in" : "out");
+                if ((offsetX > parent.clientWidth) || (offsetY > parent.clientHeight)) {
+                    className = "point no"
+                }
                 return (
                     <div key={i} style={{top: offsetY + "px", left: offsetX + "px"}} className={className}/>
                 )
@@ -62,7 +65,7 @@ export default class InteractiveArea extends React.Component {
         return (
             <div>
                 {pointDivs}
-                <img id="image" src="/assets/images/area_9.png"  style={{width: "100%"}}/>
+                <img id="image" src="/assets/images/area_9.png"  style={{width: "90%"}}/>
             </div>
         );
     }

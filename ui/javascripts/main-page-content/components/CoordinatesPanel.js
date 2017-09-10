@@ -32,13 +32,19 @@ export default class CoordinatesPanel extends React.Component {
     }
     onAddNewPointBttnClick()  {
         console.log (this.x, this.y, this.r);
-        this.props.sendPoint(this.x, this.y, this.r, 1);
+        if (isNaN(this.x) || isNaN(this.y) || isNaN(this.r)
+            || (this.r <= 0) ||(this.y < -5) || (this.y > 5)) {
+           alert("Input values are invalid");
+        } else  {
+            this.props.sendPoint(this.x, this.y, this.r, 1);
+        }
     }
 
     render () {
         return (
             <div>
                 <div id="x_block">
+                    <label>CHECK X</label>
                     {[-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
                         return (
                             <label key={i}>
@@ -49,10 +55,11 @@ export default class CoordinatesPanel extends React.Component {
                 </div>
 
                 <div id="y_coord">
-                    <Input type="text" label="Input Y" name='y' id="y"/>
+                    <Input type="text" label="INPUT Y ( -5 .. 5 )" name='y' id="y"/>
                 </div>
 
                 <div id="r_block">
+                    <label>CHANGE R</label>
                     {[-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
                         return (
                             <label key={i}>
@@ -65,6 +72,8 @@ export default class CoordinatesPanel extends React.Component {
                 <div id="add-point-bttn">
                     <Button id="add-button">ADD POINT</Button>
                 </div>
+
+                <div id="msg-block"/>
             </div>
         )
     }

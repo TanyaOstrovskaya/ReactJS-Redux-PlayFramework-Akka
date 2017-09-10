@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "526147e320ba8479ffa2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "034a25f7345075d727a5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33594,6 +33594,9 @@
 	                    var offsetX = point.x / r * parent.clientWidth / 2 + parent.clientWidth / 2;
 	                    var offsetY = -point.y / r * parent.clientHeight / 2 + parent.clientHeight / 2;
 	                    var className = "point " + (point.result == true ? "in" : "out");
+	                    if (offsetX > parent.clientWidth || offsetY > parent.clientHeight) {
+	                        className = "point no";
+	                    }
 	                    return _react3.default.createElement("div", { key: i, style: { top: offsetY + "px", left: offsetX + "px" }, className: className });
 	                });
 	            } else {
@@ -33604,7 +33607,7 @@
 	                "div",
 	                null,
 	                pointDivs,
-	                _react3.default.createElement("img", { id: "image", src: "/assets/images/area_9.png", style: { width: "100%" } })
+	                _react3.default.createElement("img", { id: "image", src: "/assets/images/area_9.png", style: { width: "90%" } })
 	            );
 	        }
 	    }]);
@@ -34385,7 +34388,11 @@
 	        key: 'onAddNewPointBttnClick',
 	        value: function onAddNewPointBttnClick() {
 	            console.log(this.x, this.y, this.r);
-	            this.props.sendPoint(this.x, this.y, this.r, 1);
+	            if (isNaN(this.x) || isNaN(this.y) || isNaN(this.r) || this.r <= 0 || this.y < -5 || this.y > 5) {
+	                alert("Input values are invalid");
+	            } else {
+	                this.props.sendPoint(this.x, this.y, this.r, 1);
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -34396,6 +34403,11 @@
 	                _react3.default.createElement(
 	                    'div',
 	                    { id: 'x_block' },
+	                    _react3.default.createElement(
+	                        'label',
+	                        null,
+	                        'CHECK X'
+	                    ),
 	                    [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
 	                        return _react3.default.createElement(
 	                            'label',
@@ -34411,11 +34423,16 @@
 	                _react3.default.createElement(
 	                    'div',
 	                    { id: 'y_coord' },
-	                    _react3.default.createElement(_input2.default, { type: 'text', label: 'Input Y', name: 'y', id: 'y' })
+	                    _react3.default.createElement(_input2.default, { type: 'text', label: 'INPUT Y ( -5 .. 5 )', name: 'y', id: 'y' })
 	                ),
 	                _react3.default.createElement(
 	                    'div',
 	                    { id: 'r_block' },
+	                    _react3.default.createElement(
+	                        'label',
+	                        null,
+	                        'CHECK R'
+	                    ),
 	                    [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
 	                        return _react3.default.createElement(
 	                            'label',
@@ -34436,7 +34453,8 @@
 	                        { id: 'add-button' },
 	                        'ADD POINT'
 	                    )
-	                )
+	                ),
+	                _react3.default.createElement('div', { id: 'msg-block' })
 	            );
 	        }
 	    }]);
@@ -34775,7 +34793,6 @@
 	            return _extends({}, state, {
 	                r: action.r
 	            });
-
 	        case 'UPDATE_POINT':
 	            return _extends({}, state, {
 	                points: state.points.map(function (point) {

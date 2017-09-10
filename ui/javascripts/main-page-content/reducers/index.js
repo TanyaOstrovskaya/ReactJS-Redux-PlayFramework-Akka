@@ -27,7 +27,6 @@ export default function pointsState (state = initialState, action) {
                 ...state,
                 r: action.r
             };
-
         case 'UPDATE_POINT' :
             return {
                 ...state,
