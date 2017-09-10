@@ -16,12 +16,11 @@ public class MainController extends Controller {
         return Results.TODO;
     }
 
-    public Result main () {
-        return ok(views.html.main.render());
-    }
-
-    public Result send () {
-        SendMailTLS.send();
-        return  ok ("OK");
+    public Result main (String user) {
+        if (user == null) {
+            return badRequest("User is not signed in");
+        } else {
+            return ok(views.html.main.render());
+        }
     }
 }

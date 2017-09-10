@@ -9,31 +9,28 @@ import akka.stream.alpakka.jms.javadsl.JmsSink;
 import akka.stream.alpakka.jms.javadsl.JmsSource;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
+import email.SendMailTLS;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import play.mvc.*;
-
 import java.util.*;
 import java.util.concurrent.CompletionStage;
-
-import static play.mvc.Results.ok;
-
 
 public class MailActor extends AbstractActor {
 
     private Materializer mat;
+    private SendMailTLS mailer;
 
     public MailActor (Materializer materializer) {
         this.mat = materializer;
+        this.mailer = new SendMailTLS();
     }
 
     @Override
     public Receive createReceive() {
         return receiveBuilder()
                 .match(String.class, str -> {
-                    String reply = "Hello" + str;
                     sendToQueue(str);
                     receiveFromQueue();
-                    sender().tell(reply, self());
+                    sender().tell(str, self());
                 })
                 .build();
     }
@@ -62,6 +59,9 @@ public class MailActor extends AbstractActor {
                 .take(1)
                 .runWith(Sink.seq(), mat)
                 .thenApply(response -> {
+                    String emailToSend = response.toString().replace("[", "").replace("]", "");
+                    System.out.println("mail to send:" + emailToSend);
+                    mailer.send(emailToSend);
                     return Arrays.asList(response.toString());
                 });
     }

@@ -3,6 +3,7 @@ import actors.MailActor;
 import actors.PointActor;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
+import com.sun.corba.se.impl.presentation.rmi.ExceptionHandlerImpl;
 import database.Password;
 import models.PointEntry;
 import models.UserEntry;
@@ -14,6 +15,7 @@ import akka.actor.*;
 import scala.compat.java8.FutureConverters;
 import javax.inject.*;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 import play.data.DynamicForm;
@@ -29,6 +31,7 @@ public class HomeController extends Controller {
     final Materializer mat;
     private Database db;
     private JPAApi jpaApi;
+    private String user;
 
 
     @Inject FormFactory formFactory;
@@ -40,7 +43,7 @@ public class HomeController extends Controller {
         this.jmsActor = system.actorOf(Props.create(MailActor.class, mat));
         this.db = db;
         this.jpaApi = api;
-
+        this.user = null;
     }
 
     public Result changeRadius(Double r) {
@@ -66,17 +69,34 @@ public class HomeController extends Controller {
                     if (isnew > 0) {
                         addNewPoint(point);
                     }
+                    if (point.getResult() > 0) {
+                        this.sendEmail();
+                    }
                     System.out.println(point.toString());
                     return ok(Integer.toString(point.getResult()));
                 });
     }
 
     public CompletionStage<Result> sendEmail () {
-        return FutureConverters.toJava(ask(jmsActor, "Tanya", 1000))
+        return FutureConverters.toJava(ask(jmsActor, this.getUserEmail(this.user), 1000))
                 .thenApply(response -> {
                     System.out.println(response);
                     return ok(response.toString());
                 });
+    }
+
+    private String getUserEmail(String user) {
+        String email = null;
+        try {
+            UserEntry res = jpaApi.withTransaction(entityManager -> {
+                TypedQuery<UserEntry> query = entityManager.createQuery("SELECT u FROM UserEntry AS u WHERE u.login = :login", UserEntry.class);
+                return query.setParameter("login", user).getSingleResult();
+            });
+            email = res.getEmail();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return email;
     }
 
     public boolean addNewPoint (PointEntry point) {
@@ -112,7 +132,6 @@ public class HomeController extends Controller {
         return result;
     }
 
-
     public Result signUpNewUser () {
         try {
             DynamicForm dynamicForm = formFactory.form().bindFromRequest();
@@ -129,7 +148,8 @@ public class HomeController extends Controller {
         try {
             DynamicForm dynamicForm = formFactory.form().bindFromRequest();
             if (this.checkUserPasswd(dynamicForm.get("username"), dynamicForm.get("password"))) {
-                url = "/main";
+                this.user = dynamicForm.get("username");
+                url = "/main?user=" + this.user;
             } else {
                 url = "/";
             }
