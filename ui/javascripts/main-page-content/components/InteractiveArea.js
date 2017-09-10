@@ -60,9 +60,9 @@ export default class InteractiveArea extends React.Component {
         }
 
         return (
-            <div id="img-container">
+            <div>
                 {pointDivs}
-                <img id="image" src="/assets/images/area_9.png"/>
+                <img id="image" src="/assets/images/area_9.png"  style={{width: "100%"}}/>
             </div>
         );
     }

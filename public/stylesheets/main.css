@@ -15,3 +15,10 @@ body {
 .out {
     background-color: red;
 }
+
+.grid {
+    display: grid;
+
+    /*свойство для колонок*/
+    grid-template-columns: 35% 1fr 20% 1fr 40%;
+}

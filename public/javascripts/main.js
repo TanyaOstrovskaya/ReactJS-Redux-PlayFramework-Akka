@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5ba9783601d50c3866a2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "526147e320ba8479ffa2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33602,9 +33602,9 @@
 
 	            return _react3.default.createElement(
 	                "div",
-	                { id: "img-container" },
+	                null,
 	                pointDivs,
-	                _react3.default.createElement("img", { id: "image", src: "/assets/images/area_9.png" })
+	                _react3.default.createElement("img", { id: "image", src: "/assets/images/area_9.png", style: { width: "100%" } })
 	            );
 	        }
 	    }]);
@@ -34692,10 +34692,24 @@
 	        value: function render() {
 	            return _react3.default.createElement(
 	                'div',
-	                null,
-	                _react3.default.createElement(_InteractiveArea2.default, { sendPoint: this.props.pointActions.sendPoint, points: this.props.points, r: this.props.r }),
-	                _react3.default.createElement(_PointsTable2.default, { points: this.props.points }),
-	                _react3.default.createElement(_CoordinatesPanel2.default, { points: this.props.points, sendPoint: this.props.pointActions.sendPoint, sendRadius: this.props.pointActions.sendRadius })
+	                { className: 'grid' },
+	                _react3.default.createElement(
+	                    'div',
+	                    { className: 'grid-item grid-item-1' },
+	                    _react3.default.createElement(_InteractiveArea2.default, { sendPoint: this.props.pointActions.sendPoint, points: this.props.points, r: this.props.r })
+	                ),
+	                _react3.default.createElement('div', { 'grid-item': true, 'grid-item-2': true }),
+	                _react3.default.createElement(
+	                    'div',
+	                    { className: 'grid-item grid-item-3' },
+	                    _react3.default.createElement(_PointsTable2.default, { points: this.props.points })
+	                ),
+	                _react3.default.createElement('div', { 'grid-item': true, 'grid-item-4': true }),
+	                _react3.default.createElement(
+	                    'div',
+	                    { className: 'grid-item grid-item-5' },
+	                    _react3.default.createElement(_CoordinatesPanel2.default, { points: this.props.points, sendPoint: this.props.pointActions.sendPoint, sendRadius: this.props.pointActions.sendRadius })
+	                )
 	            );
 	        }
 	    }]);

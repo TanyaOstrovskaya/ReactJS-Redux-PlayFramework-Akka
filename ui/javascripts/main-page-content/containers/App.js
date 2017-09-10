@@ -9,10 +9,18 @@ import * as pointActions from "../actions/mainPageActions";
 class App extends React.Component {
     render() {
         return (
-            <div>
-                <InteractiveArea sendPoint={this.props.pointActions.sendPoint} points={this.props.points} r={this.props.r} />
-                <PointsTable points={this.props.points} />
-                <CoordinatesPanel points={this.props.points} sendPoint={this.props.pointActions.sendPoint} sendRadius={this.props.pointActions.sendRadius} />
+            <div className="grid">
+                <div className="grid-item grid-item-1">
+                    <InteractiveArea sendPoint={this.props.pointActions.sendPoint} points={this.props.points} r={this.props.r} />
+                </div>
+                <div grid-item grid-item-2></div>
+                <div className="grid-item grid-item-3">
+                    <PointsTable points={this.props.points} />
+                </div>
+                <div grid-item grid-item-4></div>
+                <div className="grid-item grid-item-5">
+                    <CoordinatesPanel points={this.props.points} sendPoint={this.props.pointActions.sendPoint} sendRadius={this.props.pointActions.sendRadius} />
+                </div>
             </div>
         );
     }
