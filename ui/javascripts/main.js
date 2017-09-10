@@ -8,8 +8,6 @@ import App from "./main-page-content/containers/App";
 const store = configureStore()
 const root = document.getElementById("main-page-container");
 
-
-
 export function mainRender() {
     ReactDOM.render (
         <div>

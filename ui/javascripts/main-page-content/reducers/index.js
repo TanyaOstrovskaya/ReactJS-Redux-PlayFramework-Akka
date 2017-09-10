@@ -35,6 +35,11 @@ export default function pointsState (state = initialState, action) {
                     point
                 )
             };
+        case 'SET_POINTS' :
+            return {
+                ...state,
+                points: action.points
+            }
         default:
             return state;
     }

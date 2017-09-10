@@ -11,6 +11,7 @@ export default class InteractiveArea extends React.Component {
     }
     componentDidMount() {
         document.getElementById("image").addEventListener("click", this.onCanvasClick.bind(this));
+        this.props.getPoints();
     }
 
     onCanvasClick (event) {
@@ -72,6 +73,7 @@ export default class InteractiveArea extends React.Component {
 }
 
 InteractiveArea.propTypes = {
+    getPoints: React.PropTypes.func.isRequired,
     sendPoint: React.PropTypes.func.isRequired,
     points: React.PropTypes.array.isRequired,
     r: React.PropTypes.number.isRequired

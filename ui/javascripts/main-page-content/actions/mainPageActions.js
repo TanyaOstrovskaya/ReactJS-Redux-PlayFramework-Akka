@@ -36,6 +36,28 @@ export function sendRadius (points, r) {
     }
 }
 
+export function getAllPoints () {
+    return dispatch => {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                dispatch(setAllPoints(JSON.parse(xhr.responseText).map(function (point) {
+                    return {x: point.x, y: point.y, result: point.result}
+                })));
+            }
+        }
+        xhr.open("GET", '/getall', true);
+        xhr.send();
+    }
+}
+
+export function setAllPoints (points) {
+    return {
+        type: 'SET_POINTS',
+        points
+    }
+}
+
 export function addPoint (x, y, result) {
     return {
         type: 'ADD_POINT',

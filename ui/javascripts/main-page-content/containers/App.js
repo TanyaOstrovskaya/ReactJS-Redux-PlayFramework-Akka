@@ -7,11 +7,12 @@ import CoordinatesPanel from "../components/CoordinatesPanel";
 import * as pointActions from "../actions/mainPageActions";
 
 class App extends React.Component {
+
     render() {
         return (
             <div className="grid">
                 <div className="grid-item grid-item-1">
-                    <InteractiveArea sendPoint={this.props.pointActions.sendPoint} points={this.props.points} r={this.props.r} />
+                    <InteractiveArea getPoints={this.props.pointActions.getAllPoints} sendPoint={this.props.pointActions.sendPoint} points={this.props.points} r={this.props.r} />
                 </div>
                 <div grid-item grid-item-2></div>
                 <div className="grid-item grid-item-3">

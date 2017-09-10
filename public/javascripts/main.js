@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "034a25f7345075d727a5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "287f7508b64b22e0680b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33548,6 +33548,7 @@
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            document.getElementById("image").addEventListener("click", this.onCanvasClick.bind(this));
+	            this.props.getPoints();
 	        }
 	    }, {
 	        key: "onCanvasClick",
@@ -33619,6 +33620,7 @@
 
 
 	InteractiveArea.propTypes = {
+	    getPoints: _react3.default.PropTypes.func.isRequired,
 	    sendPoint: _react3.default.PropTypes.func.isRequired,
 	    points: _react3.default.PropTypes.array.isRequired,
 	    r: _react3.default.PropTypes.number.isRequired
@@ -34207,6 +34209,8 @@
 	});
 	exports.sendPoint = sendPoint;
 	exports.sendRadius = sendRadius;
+	exports.getAllPoints = getAllPoints;
+	exports.setAllPoints = setAllPoints;
 	exports.addPoint = addPoint;
 	exports.changeRadius = changeRadius;
 	exports.updatePoint = updatePoint;
@@ -34245,6 +34249,28 @@
 	        };
 	        xhr.open("POST", '/change_radius?r=' + r, true);
 	        xhr.send();
+	    };
+	}
+
+	function getAllPoints() {
+	    return function (dispatch) {
+	        var xhr = new XMLHttpRequest();
+	        xhr.onreadystatechange = function () {
+	            if (xhr.readyState == 4 && xhr.status == 200) {
+	                dispatch(setAllPoints(JSON.parse(xhr.responseText).map(function (point) {
+	                    return { x: point.x, y: point.y, result: point.result };
+	                })));
+	            }
+	        };
+	        xhr.open("GET", '/getall', true);
+	        xhr.send();
+	    };
+	}
+
+	function setAllPoints(points) {
+	    return {
+	        type: 'SET_POINTS',
+	        points: points
 	    };
 	}
 
@@ -34431,7 +34457,7 @@
 	                    _react3.default.createElement(
 	                        'label',
 	                        null,
-	                        'CHECK R'
+	                        'CHANGE R'
 	                    ),
 	                    [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2].map(function (number, i) {
 	                        return _react3.default.createElement(
@@ -34714,7 +34740,7 @@
 	                _react3.default.createElement(
 	                    'div',
 	                    { className: 'grid-item grid-item-1' },
-	                    _react3.default.createElement(_InteractiveArea2.default, { sendPoint: this.props.pointActions.sendPoint, points: this.props.points, r: this.props.r })
+	                    _react3.default.createElement(_InteractiveArea2.default, { getPoints: this.props.pointActions.getAllPoints, sendPoint: this.props.pointActions.sendPoint, points: this.props.points, r: this.props.r })
 	                ),
 	                _react3.default.createElement('div', { 'grid-item': true, 'grid-item-2': true }),
 	                _react3.default.createElement(
@@ -34798,6 +34824,10 @@
 	                points: state.points.map(function (point) {
 	                    return point.x === action.x && point.y === action.y ? _extends({}, point, { result: action.result }) : point;
 	                })
+	            });
+	        case 'SET_POINTS':
+	            return _extends({}, state, {
+	                points: action.points
 	            });
 	        default:
 	            return state;

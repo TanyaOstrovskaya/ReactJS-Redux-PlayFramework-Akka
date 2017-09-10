@@ -3,7 +3,7 @@ import actors.MailActor;
 import actors.PointActor;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
-import com.sun.corba.se.impl.presentation.rmi.ExceptionHandlerImpl;
+import com.google.gson.*;
 import database.Password;
 import models.PointEntry;
 import models.UserEntry;
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.concurrent.CompletionStage;
 import play.data.DynamicForm;
 import play.data.FormFactory;
+
 
 import static akka.pattern.Patterns.ask;
 
@@ -159,6 +160,22 @@ public class HomeController extends Controller {
         } finally {
             return redirect(url);
         }
+    }
+
+    public Result sendAllPoints  () {
+        try {
+            List<PointEntry> res = jpaApi.withTransaction(entityManager -> {
+                TypedQuery<PointEntry> query = entityManager.createQuery("SELECT p FROM PointEntry p", PointEntry.class);
+                return query.getResultList();
+            });
+            Gson gson = new GsonBuilder().create();
+            JsonArray array = gson.toJsonTree(res).getAsJsonArray();
+            System.out.println(array.toString());
+            return ok(array.toString());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return badRequest();
     }
 
 

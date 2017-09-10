@@ -6,7 +6,7 @@ import SignIn from "../components/SignIn";
 class MainPageContent extends React.Component {
     render() {
         return (
-            <div start-grid>
+            <div className="start-grid">
                 <div><Header/></div>
 
                 <div></div>

@@ -30,4 +30,8 @@ libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-jms" % "0.11
 libraryDependencies += "com.typesafe.play" %% "play-mailer" % "6.0.1"
 // https://mvnrepository.com/artifact/javax.mail/mail
 libraryDependencies += "javax.mail" % "mail" % "1.4.1"
+// https://mvnrepository.com/artifact/javax.json/javax.json-api
+libraryDependencies += "javax.json" % "javax.json-api" % "1.1"
+
+
 

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "034a25f7345075d727a5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "287f7508b64b22e0680b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -32676,31 +32676,33 @@
 	        value: function render() {
 	            return _react3.default.createElement(
 	                "div",
-	                null,
-	                _react3.default.createElement(_Header2.default, null),
+	                { className: "start-grid" },
 	                _react3.default.createElement(
 	                    "div",
 	                    null,
+	                    _react3.default.createElement(_Header2.default, null)
+	                ),
+	                _react3.default.createElement("div", null),
+	                _react3.default.createElement(
+	                    "div",
+	                    { name: "sign-up-block" },
 	                    _react3.default.createElement(
-	                        "div",
-	                        { name: "sign-up-block" },
-	                        _react3.default.createElement(
-	                            "label",
-	                            null,
-	                            "Sign Up"
-	                        ),
-	                        _react3.default.createElement(_SignUp2.default, null)
+	                        "label",
+	                        null,
+	                        "Sign Up"
 	                    ),
+	                    _react3.default.createElement(_SignUp2.default, null)
+	                ),
+	                _react3.default.createElement("div", null),
+	                _react3.default.createElement(
+	                    "div",
+	                    { name: "sign-in-block" },
 	                    _react3.default.createElement(
-	                        "div",
-	                        { name: "sign-in-block" },
-	                        _react3.default.createElement(
-	                            "label",
-	                            null,
-	                            "Sign In"
-	                        ),
-	                        _react3.default.createElement(_SignIn2.default, null)
-	                    )
+	                        "label",
+	                        null,
+	                        "Sign In"
+	                    ),
+	                    _react3.default.createElement(_SignIn2.default, null)
 	                )
 	            );
 	        }
