@@ -8,9 +8,7 @@ import javax.inject.*;
 public class MainController extends Controller {
 
     @Inject
-    public MainController() {
-
-    }
+    public MainController() { }
 
     public static Result signUpNewUser() {
         return Results.TODO;

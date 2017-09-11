@@ -6,6 +6,7 @@ import akka.stream.Materializer;
 import com.google.gson.*;
 import database.Password;
 import models.PointEntry;
+import models.SendInfo;
 import models.UserEntry;
 import play.db.Database;
 import play.db.jpa.JPAApi;
@@ -15,7 +16,6 @@ import akka.actor.*;
 import scala.compat.java8.FutureConverters;
 import javax.inject.*;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 import play.data.DynamicForm;
@@ -27,24 +27,25 @@ import static akka.pattern.Patterns.ask;
 @Singleton
 public class HomeController extends Controller {
 
-    final ActorRef mainActor;
-    final ActorRef jmsActor;
+    final ActorRef pointActor;
+    final ActorRef mailActor;
     final Materializer mat;
     private Database db;
     private JPAApi jpaApi;
     private String user;
-
+    private String email;
 
     @Inject FormFactory formFactory;
 
     @Inject
     public HomeController(ActorSystem system, Database db, JPAApi api) {
         this.mat = ActorMaterializer.create(system);
-        this.mainActor = system.actorOf(PointActor.getProps());
-        this.jmsActor = system.actorOf(Props.create(MailActor.class, mat));
+        this.pointActor = system.actorOf(PointActor.getProps());
+        this.mailActor = system.actorOf(Props.create(MailActor.class, mat));
         this.db = db;
         this.jpaApi = api;
         this.user = null;
+        this.email = null;
     }
 
     public Result changeRadius(Double r) {
@@ -64,25 +65,15 @@ public class HomeController extends Controller {
 
     @Transactional
     public CompletionStage<Result> checkPoint (double x, double y, double r, int isnew) {
-        return FutureConverters.toJava(ask(mainActor, new PointEntry(x, y, r), 1000))
+        PointEntry point = new  PointEntry(x, y, r);
+        return FutureConverters.toJava(ask(pointActor, new SendInfo(this.email, point.getResult() > 0 , point, isnew > 0), 1000))
                 .thenApply(response -> {
-                    PointEntry point = (PointEntry)response;
+                    PointEntry pointResp = (PointEntry)response;
                     if (isnew > 0) {
-                        addNewPoint(point);
-                        if (point.getResult() > 0) {
-                            this.sendEmail();
-                        }
+                        addNewPoint(pointResp);
                     }
-                    System.out.println(point.toString());
-                    return ok(Integer.toString(point.getResult()));
-                });
-    }
-
-    public CompletionStage<Result> sendEmail () {
-        return FutureConverters.toJava(ask(jmsActor, this.getUserEmail(this.user), 1000))
-                .thenApply(response -> {
-                    System.out.println(response);
-                    return ok(response.toString());
+                    System.out.println(pointResp.toString());
+                    return ok(Integer.toString(pointResp.getResult()));
                 });
     }
 
@@ -150,6 +141,7 @@ public class HomeController extends Controller {
             DynamicForm dynamicForm = formFactory.form().bindFromRequest();
             if (this.checkUserPasswd(dynamicForm.get("username"), dynamicForm.get("password"))) {
                 this.user = dynamicForm.get("username");
+                this.email = getUserEmail(this.user);
                 url = "/main?user=" + this.user;
             } else {
                 url = "/";
@@ -177,7 +169,6 @@ public class HomeController extends Controller {
         }
         return badRequest();
     }
-
 
     public Result index() {
         return ok(views.html.index.render());

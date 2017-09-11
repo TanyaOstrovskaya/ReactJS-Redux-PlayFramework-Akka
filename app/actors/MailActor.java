@@ -10,6 +10,7 @@ import akka.stream.alpakka.jms.javadsl.JmsSource;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
 import email.SendMailTLS;
+import models.SendInfo;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import java.util.*;
 import java.util.concurrent.CompletionStage;
@@ -27,10 +28,12 @@ public class MailActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(String.class, str -> {
-                    sendToQueue(str);
-                    receiveFromQueue();
-                    sender().tell(str, self());
+                .match(SendInfo.class, sendInfo -> {
+                    System.out.println(sendInfo.getEmail() + sendInfo.isNew() + sendInfo.isInArea() + sendInfo.getPoint().toString());
+                    if (sendInfo.isInArea() && sendInfo.isNew()) {
+                        sendToQueue(sendInfo.getEmail());
+                        receiveFromQueue();
+                    }
                 })
                 .build();
     }
